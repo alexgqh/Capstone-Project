@@ -1,8 +1,282 @@
+:root {
+  --padding-inline: 12rem;
+  --padding-block: 1.5rem;
+
+  --color-primary-1: #495e57;
+  --color-primary-2: #f4ce14;
+  --color-secondary-1: #ee9972;
+  --color-secondary-2: #fbdabb;
+  --color-hightlight-1: #edefee;
+  --color-hightlight-2: #333333;
+}
+
+/*----------GLOBAL----------*/
+
 * {
   margin: 0px;
   padding: 0px;
 }
 
-body {
-  background-color: darkgoldenrod;
+html, body, #root {
+  overflow-x: hidden;
+  height: 100%;
+  background-color: var(--color-hightlight-1);
+  color: var(--color-hightlight-2);
+  font-family: 'Karla', sans-serif;
+}
+
+/*-----------FONTS------------*/
+
+@font-face {
+  font-family: Markazi;
+  src: url('./fonts/Markazi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Karla;
+  src: url('./fonts/Karla.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*-----------ELEMENT STYLING-----------*/
+
+h1 {
+  font-family: 'Markazi';
+  font-size: 64px;
+  color: var(--color-primary-2);
+}
+
+h2 {
+  font-family: 'Markazi';
+  font-weight: normal;
+  font-size: 40px;
+  color: var(--color-hightlight-1);
+}
+
+h4 {
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--color-hightlight-1);
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-family: 'Karla', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  color: var(--color-hightlight-1);
+}
+
+button {
+  cursor: pointer;
+  border-radius: 16px;
+  padding-block: 8px;
+  width: 308px;
+
+  font-family: 'Markazi';
+  font-weight: normal;
+  font-size: 40px;
+  color: var(--color-hightlight-2);
+
+  outline: none;
+  border: none;
+  box-shadow: none;
+
+  transition-duration: 150ms;
+}
+button:active {
+  transform: scale(0.97);
+}
+
+.cta-button {
+  background-color: var(--color-primary-2);
+}
+.cta-button:hover {
+  background-color: var(--color-secondary-1);
+}
+
+.color-slate {
+  color: var(--color-hightlight-1);
+}
+.color-charcoal {
+  color: var(--color-hightlight-2);
+}
+.color-green {
+  color: var(--color-primary-1);
+}
+.color-yellow {
+  color: var(--color-primary-2);
+}
+.color-peach {
+  color: var(--color-secondary-1);
+}
+.color-cream {
+  color: var(--color-secondary-2);
+}
+
+/*----------DEFINE VERTICAL LAYOUT-----------*/
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding-block: var(--padding-block);
+  align-content: center;
+}
+
+main {
+  flex: 1;
+  /* overflow-y: auto; */
+}
+
+footer {
+  padding-block: var(--padding-block);
+}
+
+/*----------DEFINE INLINE PADDING FOR MAIN SECTIONS-----------*/
+
+@media (min-width: 807px) {
+  header, main > section, footer {
+    padding-inline: calc(var(--padding-inline) / 2);
+  }
+}
+
+@media (min-width: 1124px) {
+  header, main > section, footer {
+    padding-inline: var(--padding-inline);
+  }
+}
+
+/*----------HEADER-----------*/
+
+#header-links::before { /* create pseudo-element to create spacing to the left of the first <li> element */
+  content: "";
+}
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#header-nav {
+  flex: 1;
+  align-content: center;
+  padding-top: 6px;
+}
+
+#header-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*----------MAIN: HERO-----------*/
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > section {
+  padding-block: 64px;
+}
+
+#hero {
+  background-color: var(--color-primary-1);
+  display: flex;
+  gap: 4rem;
+}
+
+#hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+#hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#hero-title h1 {
+  line-height: 75%;
+}
+
+#hero-left, #hero-img {
+  flex: 1;
+}
+
+#hero-img > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+}
+
+/*----------MAIN: SPECIALS-----------*/
+
+#specials {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#specials-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#specials-cards {
+  display: flex;
+  gap: 1rem;
+}
+
+.special {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: white;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+
+#testimonials {
+  padding: 64px 192px;
+}
+
+.special-info {
+  padding: 1.5rem;
+}
+
+/*----------FOOTER-----------*/
+
+footer {
+  background-color: var(--color-primary-1);
+  color: var(--color-hightlight-1);
+  display: flex;
+  justify-content: space-between;
+}
+
+footer > img {
+  padding-top: 4px;
+  height: 196px;
+}
+
+footer > section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+footer li {
+  line-height: 1.5rem;
 }
