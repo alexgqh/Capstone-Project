@@ -1,9 +1,9 @@
-import LogoHeader from '../assets/logo-header.svg';
 import LogoFooter from '../assets/logo-footer.svg';
 import ImgGreekSalad from '../assets/greek-salad.svg';
 import ImgBruschetta from '../assets/bruschetta.svg';
 import ImgLemonDessert from '../assets/lemon-dessert.jpg';
 
+import Header from './header';
 import Hero from './hero';
 import Button from './button';
 import Special from './special';
@@ -33,19 +33,7 @@ const Home = ({ setPage }) => {
 
   return (
     <>
-      <header>
-        <img src={LogoHeader} alt="Little Lemon Logo"/>
-        <nav id="header-nav">
-          <ul id="header-links">
-            <li><a>Home</a></li>
-            <li>About</li>
-            <li>Menu</li>
-            <li><a onClick={() => setPage("reserve")}>Reservations</a></li>
-            <li>Order Online</li>
-            <li>Login</li>
-          </ul>
-        </nav>
-      </header>
+      <Header setPage={setPage} />
       <main>
         <Hero setPage={setPage}/>
         <section id="specials">
