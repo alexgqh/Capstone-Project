@@ -1,5 +1,3 @@
-import '../App.css'
-
 import LogoHeader from '../assets/logo-header.svg';
 import LogoFooter from '../assets/logo-footer.svg';
 import HeroImg from '../assets/hero-img.jpg';
@@ -10,7 +8,7 @@ import ImgLemonDessert from '../assets/lemon-dessert.jpg';
 import Button from './button';
 import Special from './special';
 
-const Home = () => {
+const Home = ({ setPage }) => {
   const greekSalad = {
     image: ImgGreekSalad,
     alt: "An image of a Greek salad",
@@ -42,7 +40,7 @@ const Home = () => {
             <li>Home</li>
             <li>About</li>
             <li>Menu</li>
-            <li>Reservations</li>
+            <li><a onClick={() => setPage("reserve")}>Reservations</a></li>
             <li>Order Online</li>
             <li>Login</li>
           </ul>
