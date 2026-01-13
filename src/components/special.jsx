@@ -1,6 +1,6 @@
 import IconGo from '../assets/icon-go.svg';
 
-const Special = ({image, alt, title, desc, price}) => {
+const Special = ({id, image, alt, title, desc, price}) => {
    const styleSpecialTitle = {
       display: "flex",
       justifyContent: "space-between",

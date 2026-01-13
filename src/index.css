@@ -39,10 +39,6 @@ html, body, #root {
   font-family: 'Karla', sans-serif;
 }
 
-a {
-  cursor: pointer;
-}
-
 /*-----------FONTS------------*/
 
 @font-face {
@@ -85,6 +81,10 @@ ul {
   list-style: none;
 }
 
+a {
+  cursor: pointer;
+}
+
 p {
   font-family: 'Karla', sans-serif;
   font-weight: normal;
@@ -115,6 +115,7 @@ button:active {
 
 .cta-button {
   background-color: var(--color-primary-2);
+  width: auto;
 }
 .cta-button:hover {
   background-color: var(--color-secondary-1);
@@ -137,6 +138,10 @@ button:active {
 }
 .color-cream {
   color: var(--color-secondary-2);
+}
+
+.space-block-64 {
+  height: 64px;
 }
 
 /*----------DEFINE VERTICAL LAYOUT-----------*/
@@ -230,19 +235,11 @@ main > section {
 /*----------MAIN: SPECIALS-----------*/
 
 #specials {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 77px auto;
   gap: 1rem;
-}
-
-#specials-top {
-  display: flex;
-  justify-content: space-between;
-}
-
-#specials-cards {
-  display: flex;
-  gap: 1rem;
+  height: auto;
 }
 
 .special {
@@ -258,13 +255,13 @@ main > section {
   padding: 1.5rem;
 }
 
+/*----------MAIN: TESTIMONIALS-----------*/
+
 #testimonials {
   padding-block: 0px;
 }
 
-.space-block-64 {
-  height: 64px;
-}
+/*----------MAIN: ABOUT-----------*/
 
 /*----------FOOTER-----------*/
 

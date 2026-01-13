@@ -30,15 +30,11 @@ const lemonDessert = {
 const Specials = () => {
   return (
     <section id="specials">
-      <div id="specials-top">
-        <h1 className="color-charcoal">Specials</h1>
-        <Button caption="Online menu" isCTA={true} />
-      </div>
-      <div id="specials-cards">
-        <Special {...greekSalad} />
-        <Special {...bruschetta} />
-        <Special {...lemonDessert} />
-      </div>
+      <h1 className="color-charcoal" style={{gridColumn:"1 / span 2"}}>Specials</h1>
+      <Button caption="Online menu" isCTA={true} />
+      <Special {...greekSalad} />
+      <Special {...bruschetta} />
+      <Special {...lemonDessert} />
     </section>
   );
 }
