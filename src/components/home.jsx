@@ -3,6 +3,8 @@ import LogoFooter from '../assets/logo-footer.svg';
 import Header from './header';
 import Hero from './hero';
 import Specials from './specials';
+import Testimonials from './testimonials';
+import About from './about';
 
 const Home = ({ setPage }) => {
   return (
@@ -11,16 +13,8 @@ const Home = ({ setPage }) => {
       <main>
         <Hero setPage={setPage} />
         <Specials />
-        <section id="testimonials">
-          <hr className="color-charcoal" />
-          <div className="space-block-64" aria-hidden="true" />
-          <h1 className="color-charcoal">Testimonials</h1>
-          <div className="space-block-64" aria-hidden="true" />
-          <hr className="color-charcoal" />
-        </section>
-        <section id="about">
-          About
-        </section>
+        <Testimonials />
+        <About />
       </main>
       <footer>
         <img src={LogoFooter} alt="Secondary Little Lemon Logo"/>
