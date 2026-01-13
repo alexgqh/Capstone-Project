@@ -10,6 +10,20 @@
   --color-hightlight-2: #333333;
 }
 
+/*----------DEFINE INLINE PADDING FOR MAIN SECTIONS-----------*/
+
+@media (min-width: 807px) {
+  header, main > section, footer {
+    padding-inline: calc(var(--padding-inline) / 2);
+  }
+}
+
+@media (min-width: 1124px) {
+  header, main > section, footer {
+    padding-inline: var(--padding-inline);
+  }
+}
+
 /*----------GLOBAL----------*/
 
 * {
@@ -146,20 +160,6 @@ footer {
   padding-block: var(--padding-block);
 }
 
-/*----------DEFINE INLINE PADDING FOR MAIN SECTIONS-----------*/
-
-@media (min-width: 807px) {
-  header, main > section, footer {
-    padding-inline: calc(var(--padding-inline) / 2);
-  }
-}
-
-@media (min-width: 1124px) {
-  header, main > section, footer {
-    padding-inline: var(--padding-inline);
-  }
-}
-
 /*----------HEADER-----------*/
 
 #header-links::before { /* create pseudo-element to create spacing to the left of the first <li> element */
@@ -224,6 +224,7 @@ main > section {
   height: 100%;
   width: 100%;
   border-radius: 16px;
+  object-fit: cover;
 }
 
 /*----------MAIN: SPECIALS-----------*/
@@ -253,12 +254,16 @@ main > section {
   min-width: 0;
 }
 
-#testimonials {
-  padding: 64px 192px;
-}
-
 .special-info {
   padding: 1.5rem;
+}
+
+#testimonials {
+  padding-block: 0px;
+}
+
+.space-block-64 {
+  height: 64px;
 }
 
 /*----------FOOTER-----------*/

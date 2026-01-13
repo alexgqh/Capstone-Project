@@ -82,7 +82,9 @@ const Home = ({ setPage }) => {
         </section>
         <section id="testimonials">
           <hr className="color-charcoal" />
-          Testimonials
+          <div className="space-block-64" aria-hidden="true" />
+          <h1 className="color-charcoal">Testimonials</h1>
+          <div className="space-block-64" aria-hidden="true" />
           <hr className="color-charcoal" />
         </section>
         <section id="about">
