@@ -260,6 +260,16 @@ main > section {
 #testimonials {
   padding-block: 0px;
 }
+#testimonials-display {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+.testimonial {
+  background-color: #ee9972;
+  height: 300px;
+}
 
 /*----------MAIN: ABOUT-----------*/
 
