@@ -1,52 +1,16 @@
 import LogoFooter from '../assets/logo-footer.svg';
-import ImgGreekSalad from '../assets/greek-salad.svg';
-import ImgBruschetta from '../assets/bruschetta.svg';
-import ImgLemonDessert from '../assets/lemon-dessert.jpg';
 
 import Header from './header';
 import Hero from './hero';
-import Button from './button';
-import Special from './special';
+import Specials from './specials';
 
 const Home = ({ setPage }) => {
-  const greekSalad = {
-    image: ImgGreekSalad,
-    alt: "An image of a Greek salad",
-    title: "Greek Salad",
-    desc: "Our Greek Salad is a refreshing and satisfying combination of crisp lettuce, juicy tomatoes, cucumbers, briny olives, tangy feta cheese, and a zesty vinaigrette dressing. Enjoy a taste of the Mediterranean!",
-    price: "$12.99",
-  };
-  const bruschetta = {
-    image: ImgBruschetta,
-    alt: "An image of bruschetta",
-    title: "Bruschetta",
-    desc: "Experience the fresh and vibrant flavors of Italy with our classic bruschetta. Toasted rustic bread topped with ripe tomatoes, basil, garlic, and olive oil. A perfect appetizer to start your meal. Buon appetito!",
-    price: "$5.99",
-  };
-  const lemonDessert = {
-    image: ImgLemonDessert,
-    alt: "An image of a lemon cake",
-    title: "Lemon Dessert",
-    desc: "Indulge in our refreshing Lemon Dessert, bursting with zesty citrus flavor. Made with freshly squeezed lemons and topped with a tangy lemon glaze, it's the perfect way to end your meal on a sweet note.",
-    price: "$4.99",
-  };
-
   return (
     <>
       <Header setPage={setPage} />
       <main>
-        <Hero setPage={setPage}/>
-        <section id="specials">
-          <div id="specials-top">
-            <h1 className="color-charcoal">Specials</h1>
-            <Button caption="Online menu" isCTA={true} />
-          </div>
-          <div id="specials-cards">
-            <Special {...greekSalad} />
-            <Special {...bruschetta} />
-            <Special {...lemonDessert} />
-          </div>
-        </section>
+        <Hero setPage={setPage} />
+        <Specials />
         <section id="testimonials">
           <hr className="color-charcoal" />
           <div className="space-block-64" aria-hidden="true" />
