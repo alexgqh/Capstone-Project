@@ -37,7 +37,7 @@ const Home = ({ setPage }) => {
         <img src={LogoHeader} alt="Little Lemon Logo"/>
         <nav id="header-nav">
           <ul id="header-links">
-            <li>Home</li>
+            <li><a>Home</a></li>
             <li>About</li>
             <li>Menu</li>
             <li><a onClick={() => setPage("reserve")}>Reservations</a></li>
@@ -63,7 +63,7 @@ const Home = ({ setPage }) => {
               Little Lemon offers a vibrant dining experience that feels both familiar and special.
               </p>
             </div>
-            <Button caption="Reserve a table" isCTA={true} />
+            <Button caption="Reserve a table" isCTA={true} onClick={() => setPage("reserve")} />
           </div>
           <div id="hero-img">
             <img src={HeroImg} alt="A picture of Little Lemon's outdoor dining terrace -- sunny and open." />

@@ -25,6 +25,10 @@ html, body, #root {
   font-family: 'Karla', sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 /*-----------FONTS------------*/
 
 @font-face {
