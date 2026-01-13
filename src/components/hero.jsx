@@ -19,7 +19,7 @@ const Hero = ({ setPage }) => {
           Little Lemon offers a vibrant dining experience that feels both familiar and special.
           </p>
         </div>
-        <Button caption="Reserve a table" isCTA={true} onClick={() => setPage("reserve")} />
+        <Button isCTA={true} onClick={() => setPage("reserve")}>Reserve a table</Button>
       </div>
       <div id="hero-img">
         <img src={HeroImg} alt="A picture of Little Lemon's outdoor dining terrace -- sunny and open." />

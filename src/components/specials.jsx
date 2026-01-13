@@ -31,7 +31,7 @@ const Specials = () => {
   return (
     <section id="specials">
       <h1 className="color-charcoal" style={{gridColumn:"1 / span 2"}}>Specials</h1>
-      <Button caption="Online menu" isCTA={true} />
+      <Button isCTA={true}>Online menu</Button>
       <Special {...greekSalad} />
       <Special {...bruschetta} />
       <Special {...lemonDessert} />

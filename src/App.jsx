@@ -1,13 +1,13 @@
 import Home from './components/home';
-
 import { useState } from 'react';
+import Button from './components/button';
 
 function App() {
   const [page, setPage] = useState("home");
 
   return (
     page === "reserve" ?
-      <h1 onClick={() => setPage("home")}>back to home</h1> :
+      <Button isCTA={true} onClick={() => setPage("home")}>Back to home</Button> :
       <Home setPage={setPage} />
   );
 }
