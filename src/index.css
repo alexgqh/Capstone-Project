@@ -279,7 +279,8 @@ main > section {
 
 #about {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  padding-block: 32px;
 }
 
 /*----------FOOTER-----------*/
