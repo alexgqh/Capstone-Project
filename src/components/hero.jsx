@@ -19,7 +19,11 @@ const Hero = ({ switchPage }) => {
           Little Lemon offers a vibrant dining experience that feels both familiar and special.
           </p>
         </div>
-        <Button isCTA={true} onClick={switchPage}>Reserve a table</Button>
+        <div style={{display:"flex",position:"static",gap:"1rem",width:"calc(200% + 4rem)"}}>
+          <Button isCTA={true} onClick={switchPage} style={{flex:"1"}}>Reserve a table</Button>
+          <div style={{flex:"1"}} />
+          <div style={{flex:"1"}} />
+        </div>
       </div>
       <div id="hero-img">
         <img src={HeroImg} alt="A picture of Little Lemon's outdoor dining terrace -- sunny and open." />

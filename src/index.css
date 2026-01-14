@@ -16,11 +16,20 @@
   header, main > section, footer {
     padding-inline: calc(var(--padding-inline) / 2);
   }
+  #hero-text {
+    padding-right: 4rem;
+  }
 }
 
 @media (min-width: 1124px) {
   header, main > section, footer {
     padding-inline: var(--padding-inline);
+  }
+}
+
+@media (min-width: 1308px) {
+  #hero-text {
+    padding-right: 8rem;
   }
 }
 
