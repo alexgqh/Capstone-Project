@@ -277,6 +277,11 @@ main > section {
 
 /*----------MAIN: ABOUT-----------*/
 
+#about {
+  display: flex;
+  gap: 1rem;
+}
+
 /*----------FOOTER-----------*/
 
 footer {

@@ -30,7 +30,7 @@ const lemonDessert = {
 const Specials = () => {
   return (
     <section id="specials">
-      <h1 className="color-charcoal" style={{gridColumn:"1 / span 2"}}>Specials</h1>
+      <h1 className="color-green" style={{gridColumn:"1 / span 2"}}>Specials</h1>
       <Button isCTA={true}>Online menu</Button>
       <Special {...greekSalad} />
       <Special {...bruschetta} />
