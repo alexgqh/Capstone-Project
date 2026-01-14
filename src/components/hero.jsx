@@ -1,7 +1,7 @@
 import HeroImg from '../assets/hero-img.jpg';
 import Button from './button';
 
-const Hero = ({ setPage }) => {
+const Hero = ({ switchPage }) => {
   return (
     <section id="hero">
       <div id="hero-left">
@@ -19,7 +19,7 @@ const Hero = ({ setPage }) => {
           Little Lemon offers a vibrant dining experience that feels both familiar and special.
           </p>
         </div>
-        <Button isCTA={true} onClick={() => setPage("reserve")}>Reserve a table</Button>
+        <Button isCTA={true} onClick={switchPage}>Reserve a table</Button>
       </div>
       <div id="hero-img">
         <img src={HeroImg} alt="A picture of Little Lemon's outdoor dining terrace -- sunny and open." />

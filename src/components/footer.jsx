@@ -1,19 +1,21 @@
 import LogoFooter from '../assets/logo-footer.svg';
 
-const Footer = () => {
+const Footer = ({ switchPage, scrollToTop }) => {
   return (
     <footer>
-      <img src={LogoFooter} alt="Secondary Little Lemon Logo"/>
+      <a onClick={scrollToTop} aria-label="Scroll to top" title="Scroll to top">
+        <img src={LogoFooter} alt="Little Lemon Logo"/>
+      </a>
       <section>
         <h4>
           Navigation
         </h4>
         <nav>
           <ul>
-            <li>Home</li>
+            <a onClick={scrollToTop} aria-label="Scroll to top" title="Scroll to top"><li>Home</li></a>
             <li>About</li>
             <li>Menu</li>
-            <li>Reservations</li>
+            <a onClick={switchPage} aria-label="Reserve a table" title="Reserve a table"><li>Reservations</li></a>
             <li>Order Online</li>
             <li>Login</li>
           </ul>

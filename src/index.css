@@ -286,12 +286,12 @@ footer {
   justify-content: space-between;
 }
 
-footer > img {
+footer img {
   padding-top: 4px;
   height: 196px;
 }
 
-footer > section {
+footer section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
