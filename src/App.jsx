@@ -25,9 +25,10 @@ function App() {
         //user was reserving and now wants to navigate to home page. make sure user wants to cancel their reservation!!
         setIsCanceling(true);
         return prev;
+      } else {
+        scrollToTop();
+        return "home";
       }
-      scrollToTop();
-      return "home";
     });
   }
   const setPageReserve1 = () => {
