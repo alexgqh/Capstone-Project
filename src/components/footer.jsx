@@ -5,7 +5,7 @@ const Footer = () => {
   const { setPageReserve, scrollToTop } = usePage();
 
   return (
-    <footer>
+    <footer className="page-padding">
       <a onClick={scrollToTop} aria-label="Scroll to top" title="Scroll to top">
         <img src={LogoFooter} alt="Little Lemon Logo"/>
       </a>

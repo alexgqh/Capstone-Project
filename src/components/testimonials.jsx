@@ -14,7 +14,7 @@ const users = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials">
+    <section id="testimonials" className="page-padding">
       <hr className="color-charcoal" />
       <div className="space-block-64" aria-hidden="true" />
       <div id="testimonials-display">

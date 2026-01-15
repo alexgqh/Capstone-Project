@@ -13,7 +13,7 @@
 /*----------DEFINE INLINE PADDING FOR MAIN SECTIONS-----------*/
 
 @media (min-width: 807px) {
-  header, main > section, footer {
+  .page-padding {
     padding-inline: calc(var(--padding-inline) / 2);
   }
   #hero-text {
@@ -22,7 +22,8 @@
 }
 
 @media (min-width: 1124px) {
-  header, main > section, footer {
+  /* header, main > section, footer { */
+  .page-padding {
     padding-inline: var(--padding-inline);
   }
 }
@@ -42,7 +43,7 @@
 
 html, body, #root {
   overflow-x: hidden;
-  /* height: 100%; */
+  min-height: 100vh;
   background-color: var(--color-hightlight-1);
   color: var(--color-hightlight-2);
   font-family: 'Karla', sans-serif;
@@ -147,6 +148,10 @@ button:active {
 }
 .color-cream {
   color: var(--color-secondary-2);
+}
+
+.bg-color-green {
+  background-color: var(--color-primary-1);
 }
 
 .space-block-64 {
