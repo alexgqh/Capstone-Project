@@ -44,7 +44,7 @@ function App() {
   }
 
   useEffect(() => {
-    document.querySelector("html").classList = isCanceling ? 'no-scrollbar' : '';
+    document.querySelector("body").classList = isCanceling ? 'no-scrollbar' : '';
   }, [isCanceling])
 
   return (

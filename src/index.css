@@ -166,7 +166,9 @@ button {
 }
 
 .no-scrollbar {
-  overflow-y: hidden;
+  position: fixed;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 /*----------DEFINE VERTICAL LAYOUT-----------*/
