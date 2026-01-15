@@ -1,0 +1,10 @@
+.input-container > h3 {
+  text-indent: 16px;
+  margin-bottom: 2px;
+}
+
+.input-box {
+  background-color: white;
+  padding: var(--padding-block-sm);
+  border-radius: 16px;
+}

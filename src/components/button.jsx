@@ -1,4 +1,4 @@
-const Button = ({ children, isCTA, onClick, style, keysToInteract = null }) => {
+const Button = ({ children, id, isCTA, onClick, style, keysToInteract = null }) => {
   const handleOnKeyDown = (e) => {
     if (keysToInteract) {
       e.preventDefault();
@@ -7,8 +7,12 @@ const Button = ({ children, isCTA, onClick, style, keysToInteract = null }) => {
       }
     }
   }
+  const handleClick = (e) => {
+    onClick ? onClick() : e.preventDefault();
+  }
+
   return (
-    <button className={isCTA ? "cta-button" : "reg-button"} onClick={onClick} style={{...style, height:"77px"}} onKeyDown={handleOnKeyDown}>
+    <button id={id} className={isCTA ? "cta-button" : "reg-button"} onClick={handleClick} style={{...style, height:"77px"}} onKeyDown={handleOnKeyDown}>
       {children}
     </button>
   );
