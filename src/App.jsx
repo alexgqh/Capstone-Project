@@ -37,7 +37,9 @@ function App() {
     setPage("reserve2");
   }
   const setPageReserve = () => {
-    setPageReserve1();
+    if (!page.startsWith("reserve")) {
+      setPageReserve1();
+    }
     scrollToTop();
   }
 
