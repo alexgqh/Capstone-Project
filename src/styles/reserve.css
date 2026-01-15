@@ -1,12 +1,26 @@
-@import "../index.css";
-
 :root {
-   --circle-size: 32px;
+   --circle-size: 24px;
 }
 
 .circle {
    width: var(--circle-size);
    height: var(--circle-size);
+}
+
+.circle-closed {
    border-radius: 50%;
-   color: white;
+   background-color: var(--color-highlight-1);
+}
+
+.circle-open {
+   border-radius: 50%;
+   /* background-color: var(--color-highlight-1); */
+   background-color: transparent;
+   border: 3px solid var(--color-highlight-1);
+}
+
+.bar {
+   width: 25px;
+   height: 3px;
+   background-color: var(--color-highlight-1);
 }

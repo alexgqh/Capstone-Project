@@ -17,11 +17,31 @@ function App() {
 
   const [page, setPage] = useState("home");
 
-  const setPageHome = () => { setPage("home"); scrollToTop(); }
-  const setPageReserve = (step = 0) => { setPage("reserve" + step); scrollToTop(); }
+  const setPageHome = () => {
+    setPage(prev => {
+      if (prev.startsWith("reserve")) {
+        //make sure user wants to cancel their reservation!!
+        if (!window.confirm("Are you sure you want to cancel making a reservation?")) {
+          return prev;
+        }
+      }
+      return "home";
+    });
+    scrollToTop();
+  }
+  const setPageReserve = () => {
+    setPage("reserve1");
+    scrollToTop();
+  }
+  const setPageReserve1 = () => {
+    setPage("reserve1");
+  }
+  const setPageReserve2 = () => {
+    setPage("reserve2");
+  }
 
   return (
-    <PageProvider value={{page, setPageHome, setPageReserve, scrollToTop}}>
+    <PageProvider value={{page, setPageHome, setPageReserve, setPageReserve1, setPageReserve2, scrollToTop}}>
       <Header ref={headerRef} />
       {
         page.startsWith('reserve') ?

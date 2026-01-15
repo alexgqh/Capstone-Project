@@ -1,14 +1,3 @@
-:root {
-  --padding-inline: 12rem;
-
-  --color-primary-1: #495e57;
-  --color-primary-2: #f4ce14;
-  --color-secondary-1: #ee9972;
-  --color-secondary-2: #fbdabb;
-  --color-hightlight-1: #edefee;
-  --color-hightlight-2: #333333;
-}
-
 /*----------DEFINE INLINE PADDING FOR MAIN SECTIONS-----------*/
 
 @media (min-width: 807px) {
@@ -43,8 +32,8 @@
 html, body, #root {
   overflow-x: hidden;
   min-height: 100vh;
-  background-color: var(--color-hightlight-1);
-  color: var(--color-hightlight-2);
+  background-color: var(--color-highlight-1);
+  color: var(--color-highlight-2);
   font-family: 'Karla', sans-serif;
 }
 
@@ -76,14 +65,14 @@ h2 {
   font-family: 'Markazi';
   font-weight: normal;
   font-size: 40px;
-  color: var(--color-hightlight-1);
+  color: var(--color-highlight-1);
 }
 
 h4 {
   font-family: 'Karla', sans-serif;
   font-weight: bold;
   font-size: 18px;
-  color: var(--color-hightlight-1);
+  color: var(--color-highlight-1);
 }
 
 ul {
@@ -98,27 +87,29 @@ p {
   font-family: 'Karla', sans-serif;
   font-weight: normal;
   font-size: 16px;
-  color: var(--color-hightlight-1);
+  color: var(--color-highlight-1);
 }
 
 button {
   cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.cta-button, .reg-button {
   border-radius: 16px;
   padding-block: 8px;
-  width: 308px;
 
   font-family: 'Markazi';
   font-weight: normal;
   font-size: 40px;
-  color: var(--color-hightlight-2);
-
-  outline: none;
-  border: none;
-  box-shadow: none;
+  color: var(--color-highlight-2);
 
   transition-duration: 150ms;
 }
-button:active {
+
+.cta-button:active, .reg-button:active {
   transform: scale(0.97);
 }
 
@@ -131,10 +122,10 @@ button:active {
 }
 
 .color-slate {
-  color: var(--color-hightlight-1);
+  color: var(--color-highlight-1);
 }
 .color-charcoal {
-  color: var(--color-hightlight-2);
+  color: var(--color-highlight-2);
 }
 .color-green {
   color: var(--color-primary-1);
@@ -297,7 +288,7 @@ main {
 
 footer {
   background-color: var(--color-primary-1);
-  color: var(--color-hightlight-1);
+  color: var(--color-highlight-1);
   display: flex;
   justify-content: space-between;
 }
