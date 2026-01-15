@@ -5,7 +5,7 @@ const Header = ({ ref }) => {
   const { setPageHome, setPageReserve } = usePage();
 
   return (
-    <header id="header" className="page-padding" ref={ref}>
+    <header id="header" className="page-padding padding-block-sm" ref={ref}>
       <a onClick={setPageHome}><img src={LogoHeader} alt="Little Lemon Logo"/></a>
       <nav id="header-nav">
         <ul id="header-links">

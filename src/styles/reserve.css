@@ -1,0 +1,12 @@
+@import "../index.css";
+
+:root {
+   --circle-size: 32px;
+}
+
+.circle {
+   width: var(--circle-size);
+   height: var(--circle-size);
+   border-radius: 50%;
+   color: white;
+}

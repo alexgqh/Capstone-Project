@@ -6,7 +6,7 @@ const Hero = () => {
   const { setPageReserve } = usePage();
 
   return (
-    <section id="hero" className="page-padding">
+    <section id="hero" className="page-padding padding-block-lg">
       <div id="hero-left">
         <div id="hero-text">
           <div id="hero-title">

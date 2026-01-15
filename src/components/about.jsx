@@ -30,7 +30,7 @@ const copy = [
 
 const About = () => {
   return (
-    <section id="about" style={{minHeight:"450px"}} className="page-padding">
+    <section id="about" style={{minHeight:"450px"}} className="page-padding padding-block-md">
       <div style={{flex:"1", alignSelf:"center"}}>
         <h1 className="color-green">About Little Lemon</h1>
         {copy.map((line,i) => {

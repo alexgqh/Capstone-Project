@@ -1,6 +1,5 @@
 :root {
   --padding-inline: 12rem;
-  --padding-block: 1.5rem;
 
   --color-primary-1: #495e57;
   --color-primary-2: #f4ce14;
@@ -158,6 +157,16 @@ button:active {
   height: 64px;
 }
 
+.padding-block-sm {
+  padding-block: 1.5rem;
+}
+.padding-block-md {
+  padding-block: 32px;
+}
+.padding-block-lg {
+  padding-block: 64px;
+}
+
 /*----------DEFINE VERTICAL LAYOUT-----------*/
 
 #root {
@@ -166,17 +175,12 @@ button:active {
 }
 
 header {
-  padding-block: var(--padding-block);
   align-content: center;
 }
 
 main {
   flex: 1;
   /* overflow-y: auto; */
-}
-
-footer {
-  padding-block: var(--padding-block);
 }
 
 /*----------HEADER-----------*/
@@ -205,10 +209,6 @@ header {
 main {
   display: flex;
   flex-direction: column;
-}
-
-main > section {
-  padding-block: 64px;
 }
 
 #hero {
@@ -270,9 +270,6 @@ main > section {
 
 /*----------MAIN: TESTIMONIALS-----------*/
 
-#testimonials {
-  padding-block: 0px;
-}
 #testimonials-display {
   display: grid;
   gap: 1rem;
@@ -294,7 +291,6 @@ main > section {
 #about {
   display: flex;
   gap: 2rem;
-  padding-block: 32px;
 }
 
 /*----------FOOTER-----------*/

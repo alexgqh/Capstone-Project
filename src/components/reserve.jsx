@@ -1,4 +1,5 @@
 import { usePage } from "../global/pageContext"
+import "../styles/reserve.css"
 
 const ReserveHeader = () => {
   const { page } = usePage();
@@ -10,6 +11,7 @@ const ReserveHeader = () => {
   return (
     <div className="bg-color-green page-padding" style={{paddingBlock:"32px"}}>
       <h1>{getTitle()}</h1>
+      <div className="circle"></div>
     </div>
   )
 }
