@@ -1,9 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { PageProvider } from './global/pageContext';
 
 import Header from './components/header';
 import Home from './components/home';
 import Reserve from './components/reserve';
+import Confirm from './components/confirm';
 
 function App() {
   const headerRef = useRef();
@@ -16,22 +17,18 @@ function App() {
   }
 
   const [page, setPage] = useState("home");
+  const [isCanceling, setIsCanceling] = useState(false);
 
   const setPageHome = () => {
     setPage(prev => {
       if (prev.startsWith("reserve")) {
-        //make sure user wants to cancel their reservation!!
-        if (!window.confirm("Are you sure you want to cancel making a reservation?")) {
-          return prev;
-        }
+        //user was reserving and now wants to navigate to home page. make sure user wants to cancel their reservation!!
+        setIsCanceling(true);
+        return prev;
       }
+      scrollToTop();
       return "home";
     });
-    scrollToTop();
-  }
-  const setPageReserve = () => {
-    setPage("reserve1");
-    scrollToTop();
   }
   const setPageReserve1 = () => {
     setPage("reserve1");
@@ -39,6 +36,14 @@ function App() {
   const setPageReserve2 = () => {
     setPage("reserve2");
   }
+  const setPageReserve = () => {
+    setPageReserve1();
+    scrollToTop();
+  }
+
+  useEffect(() => {
+    document.querySelector("html").classList = isCanceling ? 'no-scrollbar' : '';
+  }, [isCanceling])
 
   return (
     <PageProvider value={{page, setPageHome, setPageReserve, setPageReserve1, setPageReserve2, scrollToTop}}>
@@ -47,6 +52,16 @@ function App() {
         page.startsWith('reserve') ?
           <Reserve /> :
           <Home />
+      }
+      {isCanceling ?
+        <Confirm
+          confirmIsCTA={false}
+          title="Leave this page?"
+          message="Your reservation is still pending. Any information you have entered will be lost."
+          onCancel={() => setIsCanceling(false)}
+          onConfirm={() => {setIsCanceling(false); setPage("home"); scrollToTop();}}
+        /> :
+        null
       }
     </PageProvider>
   );

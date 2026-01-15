@@ -9,7 +9,7 @@ const ReserveBanner = () => {
     return `Reserve a table (Step ${step} of 2)`;
   }
 
-  const handleClick = (buttonClicked) => {
+  const handleProgressIndicatorClick = (buttonClicked) => {
     if (page === "reserve2") {
       //User is on page 2
       if (buttonClicked === 1) {
@@ -29,12 +29,12 @@ const ReserveBanner = () => {
   }
 
   return (
-    <div className="bg-color-green page-padding" style={{paddingBlock:"32px"}}>
+    <div className="bg-color-green page-padding padding-block-md">
       <h1>{getTitle()}</h1>
       <div className="progress-indicator" style={{display:"flex", alignItems:"center"}}>
-        <button className="circle circle-closed" onClick={() => handleClick(1)} />
+        <button className="circle circle-closed" onClick={() => handleProgressIndicatorClick(1)} />
         <div className="bar" />
-        <button className={"circle " + ((page==="reserve1") ? "circle-open" : "circle-closed")} onClick={() => handleClick(2)} />
+        <button className={"circle " + ((page==="reserve1") ? "circle-open" : "circle-closed")} onClick={() => handleProgressIndicatorClick(2)} />
       </div>
     </div>
   )

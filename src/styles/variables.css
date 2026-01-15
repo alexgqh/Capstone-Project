@@ -1,5 +1,8 @@
 :root {
    --padding-inline: 12rem;
+   --padding-block-sm: 1.5rem;
+   --padding-block-md: 32px;
+   --padding-block-lg: 64px;
  
    --color-primary-1: #495e57;
    --color-primary-2: #f4ce14;

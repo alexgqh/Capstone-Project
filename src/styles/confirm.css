@@ -1,0 +1,28 @@
+.confirm-mask {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: hsl(from var(--color-highlight-2) h s l / 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-box {
+  border-radius: 16px;
+  background-color: var(--color-highlight-1);
+  text-align: center;
+  padding-inline: var(--padding-block-md);
+  padding-block: var(--padding-block-sm);
+  max-width: 400px;
+}
+
+.confirm-buttons {
+  margin-top: var(--padding-block-sm);
+  display: flex;
+  gap: var(--padding-block-sm);
+}
+.confirm-buttons > button {
+  flex: 1;
+}
