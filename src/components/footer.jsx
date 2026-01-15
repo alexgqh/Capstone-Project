@@ -1,6 +1,9 @@
 import LogoFooter from '../assets/logo-footer.svg';
+import { usePage } from '../global/pageContext';
 
-const Footer = ({ switchPage, scrollToTop }) => {
+const Footer = ({ scrollToTop }) => {
+  const { setPageReserve } = usePage();
+
   return (
     <footer>
       <a onClick={scrollToTop} aria-label="Scroll to top" title="Scroll to top">
@@ -15,7 +18,7 @@ const Footer = ({ switchPage, scrollToTop }) => {
             <a onClick={scrollToTop} aria-label="Scroll to top" title="Scroll to top"><li>Home</li></a>
             <li>About</li>
             <li>Menu</li>
-            <a onClick={switchPage} aria-label="Reserve a table" title="Reserve a table"><li>Reservations</li></a>
+            <a onClick={setPageReserve} aria-label="Reserve a table" title="Reserve a table"><li>Reservations</li></a>
             <li>Order Online</li>
             <li>Login</li>
           </ul>

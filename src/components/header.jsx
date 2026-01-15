@@ -1,6 +1,9 @@
 import LogoHeader from '../assets/logo-header.svg';
+import { usePage } from '../global/pageContext';
 
-const Header = ({ switchPage, scrollToTop, ref }) => {
+const Header = ({ scrollToTop, ref }) => {
+  const { setPageReserve } = usePage();
+
   return (
     <header id="header" ref={ref}>
       <a onClick={scrollToTop}><img src={LogoHeader} alt="Little Lemon Logo"/></a>
@@ -9,7 +12,7 @@ const Header = ({ switchPage, scrollToTop, ref }) => {
           <li><a onClick={scrollToTop}>Home</a></li>
           <li>About</li>
           <li>Menu</li>
-          <li><a onClick={switchPage}>Reservations</a></li>
+          <li><a onClick={setPageReserve}>Reservations</a></li>
           <li>Order Online</li>
           <li>Login</li>
         </ul>

@@ -1,14 +1,23 @@
-import Home from './components/home';
 import { useState } from 'react';
-import Button from './components/button';
+import { PageProvider } from './global/pageContext';
+
+import Home from './components/home';
+import Reserve from './components/reserve';
 
 function App() {
   const [page, setPage] = useState("home");
 
+  const setPageHome = () => setPage("home");
+  const setPageReserve = (step = 0) => setPage("reserve" + step);
+
   return (
-    page === "reserve" ?
-      <Button isCTA={true} onClick={() => setPage("home")}>Back to home</Button> :
-      <Home setPage={setPage} />
+    <PageProvider value={{page, setPageHome, setPageReserve}}>
+      {
+        page.startsWith('reserve') ?
+          <Reserve /> :
+          <Home />
+      }
+    </PageProvider>
   );
 }
 

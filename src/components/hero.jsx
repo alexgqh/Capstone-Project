@@ -1,7 +1,10 @@
 import HeroImg from '../assets/hero-img.jpg';
 import Button from './button';
+import { usePage } from '../global/pageContext';
 
 const Hero = ({ switchPage }) => {
+  const { setPageReserve } = usePage();
+
   return (
     <section id="hero">
       <div id="hero-left">
@@ -20,7 +23,7 @@ const Hero = ({ switchPage }) => {
           </p>
         </div>
         <div style={{display:"flex",position:"static",gap:"1rem",width:"calc(200% + 4rem)"}}>
-          <Button isCTA={true} onClick={switchPage} style={{flex:"1"}}>Reserve a table</Button>
+          <Button isCTA={true} onClick={setPageReserve} style={{flex:"1"}}>Reserve a table</Button>
           <div style={{flex:"1"}} />
           <div style={{flex:"1"}} />
         </div>

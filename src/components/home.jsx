@@ -7,12 +7,8 @@ import Footer from './footer';
 
 import { useRef } from 'react';
 
-const Home = ({ setPage }) => {
+const Home = () => {
   const headerRef = useRef();
-
-  const switchPage = () => {
-    setPage("reserve");
-  }
 
   const scrollToTop = () => {
     headerRef.current.scrollIntoView({
@@ -23,14 +19,14 @@ const Home = ({ setPage }) => {
 
   return (
     <>
-      <Header switchPage={switchPage} scrollToTop={scrollToTop} ref={headerRef} />
+      <Header scrollToTop={scrollToTop} ref={headerRef} />
       <main>
-        <Hero switchPage={switchPage} scrollToTop={scrollToTop} />
+        <Hero scrollToTop={scrollToTop} />
         <Specials />
         <Testimonials />
         <About />
       </main>
-      <Footer switchPage={switchPage} scrollToTop={scrollToTop} />
+      <Footer scrollToTop={scrollToTop} />
     </>
   )
 }
