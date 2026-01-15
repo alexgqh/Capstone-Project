@@ -17,20 +17,3 @@ export const usePage = () => {
   }
   return context;
 }
-
-// // 1. Create the context
-// const PageStateContext = createContext(null);
-
-// // 2. Create a provider component
-// export const PageStateProvider = ({ children }) => {
-//   const [page, setPage] = useState('home');
-
-//   return (
-//     <PageStateContext.Provider value={{ page, setPage }}>
-//       {children}
-//     </PageStateContext.Provider>
-//   );
-// };
-
-// // 3. Create a custom hook to use the global state
-// export const usePageState = () => useContext(PageStateProvider);

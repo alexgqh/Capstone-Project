@@ -2,7 +2,7 @@ import HeroImg from '../assets/hero-img.jpg';
 import Button from './button';
 import { usePage } from '../global/pageContext';
 
-const Hero = ({ switchPage }) => {
+const Hero = () => {
   const { setPageReserve } = usePage();
 
   return (
