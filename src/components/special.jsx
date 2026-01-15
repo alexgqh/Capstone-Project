@@ -11,7 +11,7 @@ const Special = ({id, image, alt, title, desc, price}) => {
 
    return (
       <div className="special" style={{overflow:"hidden"}}>
-         <img src={image} alt={alt} style={{minHeight: "192px", objectFit: "cover"}} />
+         <img src={image} alt={alt} style={{minHeight: "192px", maxHeight: "192px", objectFit: "cover"}} />
          <div className="special-info" style={{...styleSpecialTitle, flexDirection:"column", height:"100%"}}>
             <div className="special-title" style={ {...styleSpecialTitle, ...gapBottom} }>
                <h4 className="color-charcoal">{title}</h4>
