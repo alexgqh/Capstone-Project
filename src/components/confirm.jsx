@@ -1,6 +1,6 @@
 import Button from "./button";
 import '../styles/confirm.css';
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const Confirm = ({ title, message, onCancel, onConfirm, confirmIsCTA = true, optionCancel = "Cancel", optionConfirm = "Confirm" }) => {
   const cancelKeys = ["Escape"];
@@ -20,9 +20,21 @@ const Confirm = ({ title, message, onCancel, onConfirm, confirmIsCTA = true, opt
     }
   }, []);
 
+  const mainWindowArea = useRef();
+  const handleClickOutside = (e) => {
+    if (mainWindowArea.current && !mainWindowArea.current.contains(e.target)) {
+      onCancel();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div className="confirm-mask">
-      <form className="confirm-box padding-inline">
+      <form className="confirm-box padding-inline" ref={mainWindowArea}>
         <h1 className="color-charcoal">{title}</h1>
         <p className="color-charcoal">{message}</p>
         <div className="confirm-buttons">
