@@ -11,19 +11,19 @@ const Reserve = () => {
 
   const Page1 = () => {
     return (
-      <div id="reserve1-layout">
-        <NumberInput caption="Number of guests" min={1} max={16} def={2} id="input-nr-guests" />
+      <div id="reserve1-layout" className="page-padding">
+        <NumberInput caption="Number of guests" min={1} max={16} def={2} id="input-nr-guests" style={{alignSelf:"center"}} />
         <InputBase caption="Seating" id="input-seating">
-          <p className="color-charcoal">test</p>
+          <p className="color-charcoal"></p>
         </InputBase>
         <InputBase caption="Date" id="input-date">
-          <p className="color-charcoal">test</p>
+          <p className="color-charcoal"></p>
         </InputBase>
         <InputBase caption="Time" id="input-time">
-          <p className="color-charcoal">test</p>
+          <p className="color-charcoal"></p>
         </InputBase>
         <InputBase caption="Occasion" isRequired={false} id="input-occasion">
-          <p className="color-charcoal">test</p>
+          <p className="color-charcoal"></p>
         </InputBase>
         <div id="reserve1-layout-empty-space" ariaHidden="true" />
         <Button id="reserve1-cancel" onClick={cancelReservation}>Cancel</Button>

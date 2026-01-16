@@ -26,13 +26,13 @@
 }
 
 #reserve1-layout {
-   padding-inline: var(--padding-inline);
-   padding-block: var(--padding-block-md);
+   padding-top: var(--padding-block-md);
    display: grid;
    gap: 1rem;
    grid-template-columns: repeat(5, 1fr);
-   grid-template-rows: repeat(3, auto) 64px 77px;
+   grid-template-rows: repeat(3, auto) var(--padding-block-md) 77px;
    height: auto;
+   align-items: end;
 }
 
 #input-nr-guests {
@@ -65,10 +65,19 @@
 
 #reserve1-cancel {
    grid-row: 5;
-   grid-column: 1;
+   grid-column: 1 / 3;
 }
 
 #reserve1-continue {
    grid-row: 5;
-   grid-column: 2;
+   grid-column: 3 / 5;
+}
+
+@media (min-width: 1700px) {
+   #reserve1-cancel {
+      grid-column: 1;
+   }
+   #reserve1-continue {
+      grid-column: 2;
+   }
 }

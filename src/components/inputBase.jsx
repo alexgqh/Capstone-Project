@@ -10,7 +10,7 @@ const InputBase = ({ children, caption, id, style, isRequired = true }) => {
 
   return (
     <div id={id} className="input-container" style={style}>
-      <h3 className="color-green">{caption}{renderRequiredAstrisk()}</h3>
+      <p className="input-caption color-green">{caption}{renderRequiredAstrisk()}</p>
       <div className="input-box">
         {children}
       </div>
