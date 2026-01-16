@@ -8,3 +8,19 @@
   padding: var(--padding-block-sm);
   border-radius: 16px;
 }
+
+.number-input-layout {
+  display: flex;
+}
+.number-input-layout > button {
+  background-color: transparent;
+}
+.number-input-decrementor, .number-input-incrementor {
+  height: 100%;
+  width: calc(height);
+}
+.number-input {
+  text-align: center;
+  width: 100%;
+  flex: 1;
+}

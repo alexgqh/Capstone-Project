@@ -1,6 +1,7 @@
 import "../styles/reserve.css"
 import ReserveBanner from './reserveBanner'
 import InputBase from "./inputBase"
+import NumberInput from './numberInput'
 import Button from './button'
 import { usePage } from "../global/pageContext"
 
@@ -11,9 +12,7 @@ const Reserve = () => {
   const Page1 = () => {
     return (
       <div id="reserve1-layout">
-        <InputBase caption="Number of guests" placeholder={"Test Placeholder"} id="input-nr-guests">
-          <p className="color-charcoal">test</p>
-        </InputBase>
+        <NumberInput caption="Number of guests" min={1} max={16} def={2} id="input-nr-guests" />
         <InputBase caption="Seating" id="input-seating">
           <p className="color-charcoal">test</p>
         </InputBase>

@@ -97,6 +97,26 @@ button {
   box-shadow: none;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Removes margin in older versions of Chrome */
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+
+  /* General property for modern browsers (use in addition to vendor prefixes) */
+  appearance: textfield;
+}
+
 .cta-button, .reg-button {
   border-radius: 16px;
   padding-block: 8px;

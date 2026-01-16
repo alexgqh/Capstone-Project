@@ -1,7 +1,7 @@
 import '../styles/input.css'
 import { useState } from 'react'
 
-const InputBase = ({ children, caption, style, id, isRequired = true }) => {
+const InputBase = ({ children, caption, id, style, isRequired = true }) => {
   const renderRequiredAstrisk = () => {
     if (isRequired) {
       return <span className="color-peach"> *</span>
