@@ -20,16 +20,8 @@ function App() {
   const [isCanceling, setIsCanceling] = useState(false);
 
   const setPageHome = () => {
-    setPage(prev => {
-      if (prev.startsWith("reserve")) {
-        //user was reserving and now wants to navigate to home page. make sure user wants to cancel their reservation!!
-        setIsCanceling(true);
-        return prev;
-      } else {
-        scrollToTop();
-        return "home";
-      }
-    });
+    setPage("home");
+    scrollToTop();
   }
   const setPageReserve1 = () => {
     setPage("reserve1");
@@ -43,13 +35,16 @@ function App() {
     }
     scrollToTop();
   }
+  const cancelReservation = () => {
+    setIsCanceling(true);
+  }
 
   useEffect(() => {
     document.querySelector("body").classList = isCanceling ? 'no-scrollbar' : '';
   }, [isCanceling])
 
   return (
-    <PageProvider value={{page, setPageHome, setPageReserve, setPageReserve1, setPageReserve2, scrollToTop}}>
+    <PageProvider value={{page, setPageHome, setPageReserve1, setPageReserve2, setPageReserve, cancelReservation, scrollToTop}}>
       <Header ref={headerRef} />
       {
         page.startsWith('reserve') ?

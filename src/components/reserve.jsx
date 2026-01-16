@@ -6,7 +6,7 @@ import { usePage } from "../global/pageContext"
 
 const Reserve = () => {
 
-  const { page } = usePage();
+  const { page, cancelReservation, setPageReserve2 } = usePage();
 
   const Page1 = () => {
     return (
@@ -27,8 +27,8 @@ const Reserve = () => {
           <p className="color-charcoal">test</p>
         </InputBase>
         <div id="reserve1-layout-empty-space" ariaHidden="true" />
-        <Button id="reserve1-cancel">Cancel</Button>
-        <Button id="reserve1-continue" isCTA={true}>Continue</Button>
+        <Button id="reserve1-cancel" onClick={cancelReservation}>Cancel</Button>
+        <Button id="reserve1-continue" isCTA={true} onClick={setPageReserve2}>Continue</Button>
       </div>
     )
   }
