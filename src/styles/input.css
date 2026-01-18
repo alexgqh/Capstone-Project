@@ -24,8 +24,8 @@ input[type="number"] {
 }
 .number-input-decrementor, .number-input-incrementor {
   height: 100%;
-  width: calc(height);
 }
+
 .number-input {
   text-align: center;
   width: 100%;

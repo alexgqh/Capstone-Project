@@ -13,33 +13,41 @@ const NumberInput = ({ caption, min, max, def, id, style, isRequired = true }) =
   useEffect(() => {
     setDecEnabled(value > min);
     setIncEnabled(value < max);
-  }, [value])
+  }, [value]);
 
+  const decVal = () => setValue(prev => value > min ? prev - 1 : prev);
+  const incVal = () => setValue(prev => value < max ? prev + 1 : prev);
   const handleDecrement = (e) => {
     e.preventDefault();
-    setValue(prev => decEnabled ? prev - 1 : prev);
+    decVal();
   }
   const handleIncrement = (e) => {
     e.preventDefault();
-    setValue(prev => incEnabled ? prev + 1 : prev);
+    incVal();
   }
-
   const getDecrementorClassName = () => "number-input-decrementor" + (decEnabled ? "" : " disable-pointer");
   const getIncrementorClassName = () => "number-input-incrementor" + (incEnabled ? "" : " disable-pointer");
 
   return (
     <InputBase id={id} caption={caption} isRequired={isRequired} style={{...style, minHeight:"77px"}}>
       <div className="number-input-layout">
-        <button className={getDecrementorClassName()} onClick={handleDecrement}>
-          <img src={decEnabled ? ChevronDownReg : ChevronDownFaded} />
+        <button
+          className={getDecrementorClassName()}
+          onClick={handleDecrement}
+        >
+          <img src={decEnabled ? ChevronDownReg : ChevronDownFaded} draggable={false} />
         </button>
         <input className="number-input" type="number" value={value} min={min} max={max} />
-        <button className={getIncrementorClassName()} onClick={handleIncrement}>
-          <img src={incEnabled ? ChevronUpReg : ChevronUpFaded} />
+        <button
+          className={getIncrementorClassName()}
+          onClick={handleIncrement}
+        >
+          <img src={incEnabled ? ChevronUpReg : ChevronUpFaded} draggable={false} />
         </button>
       </div>
     </InputBase>
   );
 }
+
 
 export default NumberInput;
