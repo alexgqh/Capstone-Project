@@ -12,7 +12,7 @@ const Button = ({ children, id, isCTA, onClick, style, keysToInteract = null }) 
   }
 
   return (
-    <button id={id} className={isCTA ? "cta-button" : "reg-button"} onClick={handleClick} style={{...style, height:"77px"}} onKeyDown={handleOnKeyDown}>
+    <button id={id} className={isCTA ? "cta-button" : "reg-button"} onClick={handleClick} style={{...style, height:"77px"}} onKeyDown={handleOnKeyDown} type="button">
       {children}
     </button>
   );
