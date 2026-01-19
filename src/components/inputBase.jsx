@@ -1,6 +1,6 @@
 import '../styles/input.css'
 
-const InputBase = ({ id, className, children, caption, style, ref, onFocus, isFocused, isRequired = true }) => {
+const InputBase = ({ id, children, caption, style, ref, onFocus, isFocused, isRequired = true }) => {
   const renderRequiredAstrisk = () => {
     if (isRequired) {
       return <span className="color-peach"> *</span>

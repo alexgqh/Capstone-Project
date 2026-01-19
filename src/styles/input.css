@@ -13,7 +13,14 @@ input[type="number"] {
   padding-block: 0px;
   border-radius: 16px;
   height: 57px;
-  outline: none;
+  /* outline: none; */
+}
+
+.input-font {
+  font-family: 'Markazi', sans-serif;
+  font-weight: normal;
+  font-size: 48px;
+  color: var(--color-highlight-2);
 }
 
 .input-focus {

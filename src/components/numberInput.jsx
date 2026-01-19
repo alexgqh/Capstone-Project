@@ -64,7 +64,7 @@ const NumberInput = ({ id, caption, min, max, def, onFocus, isFocused, isRequire
           <img src={decEnabled ? ChevronDownReg : ChevronDownFaded} draggable={false} />
         </button>
         <input
-          className="number-input"
+          className="number-input input-font"
           type="number"
           value={value} min={min} max={max}
           onChange={handleValueChange}
