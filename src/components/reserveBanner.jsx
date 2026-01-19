@@ -32,9 +32,9 @@ const ReserveBanner = () => {
     <div className="bg-color-green page-padding padding-block-md">
       <h1>{getTitle()}</h1>
       <div className="progress-indicator" style={{display:"flex", alignItems:"center"}}>
-        <button className="circle circle-closed" onClick={() => handleProgressIndicatorClick(1)} />
+        <button className="circle circle-closed" onClick={() => handleProgressIndicatorClick(1)} tabIndex={-1} />
         <div className="bar" />
-        <button className={"circle " + ((page==="reserve1") ? "circle-open" : "circle-closed")} onClick={() => handleProgressIndicatorClick(2)} />
+        <button className={"circle " + ((page==="reserve1") ? "circle-open" : "circle-closed")} onClick={() => handleProgressIndicatorClick(2)} tabIndex={-1} />
       </div>
     </div>
   )

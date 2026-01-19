@@ -1,17 +1,18 @@
 import '../styles/input.css'
-import { useState } from 'react'
 
-const InputBase = ({ children, caption, id, style, isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, style, ref, onFocus, isFocused, isRequired = true }) => {
   const renderRequiredAstrisk = () => {
     if (isRequired) {
       return <span className="color-peach"> *</span>
     }
   }
 
+  const getClassName = () => isFocused ? "input-box input-focus" : "input-box";
+
   return (
     <div id={id} className="input-container" style={style}>
       <p className="input-caption color-green">{caption}{renderRequiredAstrisk()}</p>
-      <div className="input-box">
+      <div className={getClassName()} ref={ref} tabIndex={0} onFocus={onFocus}>
         {children}
       </div>
     </div>

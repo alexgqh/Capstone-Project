@@ -133,6 +133,10 @@ input[type=number] {
   transition-duration: 150ms;
 }
 
+.cta-button:focus, .reg-button:focus {
+  outline: 4px solid var(--color-primary-1);
+}
+
 .cta-button:active, .reg-button:active {
   transform: scale(0.97);
 }

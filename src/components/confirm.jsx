@@ -21,13 +21,13 @@ const Confirm = ({ title, message, onCancel, onConfirm, confirmIsCTA = true, opt
   }, []);
 
   const mainWindowArea = useRef();
-  const handleClickOutside = (e) => {
-    if (mainWindowArea.current && !mainWindowArea.current.contains(e.target)) {
-      onCancel();
-    }
-  }
 
   useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (mainWindowArea.current && !mainWindowArea.current.contains(e.target)) {
+        onCancel();
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
