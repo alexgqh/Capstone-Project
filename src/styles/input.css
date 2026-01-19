@@ -36,6 +36,9 @@ input[type="number"] {
   width: 100%;
   flex: 1;
 }
+.number-input::selection {
+  background-color: transparent;
+}
 .disable-pointer {
   cursor: default !important;
 }
