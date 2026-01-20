@@ -40,6 +40,12 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     if (val <= max && val >= min) {
       setValue(e.target.value);
     }
+    else if (val > max) {
+      setValue(max);
+    }
+    else if (val < min) {
+      setValue(min);
+    }
   }
   const handleFocus = () => {
     inputRef.current?.select();
