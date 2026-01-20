@@ -44,7 +44,7 @@ input[type="number"] {
   flex: 1;
 }
 .number-input::selection {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 .disable-pointer {
   cursor: default !important;

@@ -1,42 +1,63 @@
-import InputBase from "./inputBase"
+import InputBase, { useIsFocused } from "./inputBase"
 import ChevronDownReg from '../assets/chevron-down-reg.svg'
 import ChevronDownFaded from '../assets/chevron-down-faded.svg'
 import ChevronUpReg from '../assets/chevron-up-reg.svg'
 import ChevronUpFaded from '../assets/chevron-up-faded.svg'
 import { useState, useEffect, useRef } from "react"
 
-const NumberInput = ({ id, caption, min, max, def, onFocus, isFocused, isRequired = true }) => {
+const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
   const [value, setValue] = useState(def);
   const [decEnabled, setDecEnabled] = useState(def > min);
   const [incEnabled, setIncEnabled] = useState(def < max);
+  const isFocused = useIsFocused();
 
-  const baseRef = useRef();
+  const inputRef = useRef();
+  const inputTimeoutIDRef = useRef();
 
   useEffect(() => {
     setDecEnabled(value > min);
     setIncEnabled(value < max);
   }, [value]);
 
-  const decVal = () => setValue(prev => prev > min ? prev - 1 : min);
-  const incVal = () => setValue(prev => prev < max ? prev + 1 : max);
+  const decVal = () => setValue(prev => prev > min ? parseInt(prev) - 1 : min);
+  const incVal = () => setValue(prev => prev < max ? parseInt(prev) + 1 : max);
+
+  const selectInputText = () => {
+    setTimeout(()=>inputRef.current?.select(), 1);
+  }
   const handleDecrement = (e) => {
     e.preventDefault();
     decVal();
-    baseRef.current?.focus();
+    selectInputText();
   }
   const handleIncrement = (e) => {
     e.preventDefault();
     incVal();
-    baseRef.current?.focus();
+    selectInputText();
   }
-  const getDecrementorClassName = () => "number-input-decrementor" + (decEnabled ? "" : " disable-pointer");
-  const getIncrementorClassName = () => "number-input-incrementor" + (incEnabled ? "" : " disable-pointer");
-
   const handleValueChange = (e) => {
     const val = e.target.value;
     if (val <= max && val >= min) {
       setValue(e.target.value);
     }
+  }
+  const handleFocus = () => {
+    inputRef.current?.select();
+  }
+  const handleKeyUp = () => {
+    const timeout = 1000;
+
+    if (inputTimeoutIDRef.current) {
+      clearTimeout(inputTimeoutIDRef.current);
+      inputTimeoutIDRef.current = null;
+    }
+
+    const timeoutFunction = () => {
+      inputRef.current?.select();
+      inputTimeoutIDRef.current = null;
+    }
+
+    inputTimeoutIDRef.current = setTimeout(timeoutFunction, timeout);
   }
 
   //Listen for arrow key presses
@@ -49,15 +70,15 @@ const NumberInput = ({ id, caption, min, max, def, onFocus, isFocused, isRequire
       if (incKeys.includes(e.key)) incVal();
       if (decKeys.includes(e.key)) decVal();
     }
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    inputRef.current?.addEventListener('keydown', handleKeyDown);
+    return () => inputRef.current?.removeEventListener('keydown', handleKeyDown);
   }, [isFocused]);
 
   return (
-    <InputBase id={id} caption={caption} isRequired={isRequired} style={{alignSelf:"center", minHeight:"77px"}} onFocus={onFocus} isFocused={isFocused} ref={baseRef}>
+    <InputBase id={id} caption={caption} isRequired={isRequired} style={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus}>
       <div className="number-input-layout">
         <button
-          className={getDecrementorClassName()}
+          className={`number-input-decrementor${decEnabled ? "" : " disable-pointer"}`}
           onClick={handleDecrement}
           tabIndex={-1}
         >
@@ -68,11 +89,12 @@ const NumberInput = ({ id, caption, min, max, def, onFocus, isFocused, isRequire
           type="number"
           value={value} min={min} max={max}
           onChange={handleValueChange}
-          onClick={() => baseRef.current?.focus()}
-          tabIndex={-1}
+          onClick={selectInputText}
+          onKeyUp={handleKeyUp}
+          ref={inputRef}
         />
         <button
-          className={getIncrementorClassName()}
+          className={`number-input-incrementor${incEnabled ? "" : " disable-pointer"}`}
           onClick={handleIncrement}
           tabIndex={-1}
         >

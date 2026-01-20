@@ -5,22 +5,19 @@ import NumberInput from './numberInput'
 import RadioInput from './radioInput'
 import Button from './button'
 import { usePage } from "../global/pageContext"
-import { useState } from "react"
 
 const Reserve = () => {
 
   const { page, cancelReservation, setPageReserve2 } = usePage();
 
   const Page1 = () => {
-    const [focus, setFocus] = useState(null);
-
     return (
       <>
-        <NumberInput id="input-nr-guests" caption="Number of guests" min={1} max={30} def={1} onFocus={() => setFocus(0)} isFocused={focus === 0} />
-        <RadioInput id="input-seating" caption="Seating" onFocus={() => setFocus(1)} isFocused={focus === 1} />
-        <InputBase id="input-date" caption="Date" onFocus={() => setFocus(2)} isFocused={focus === 2} />
-        <InputBase id="input-time" caption="Time" onFocus={() => setFocus(3)} isFocused={focus === 3} />
-        <InputBase id="input-occasion" caption="Occasion" isRequired={false} onFocus={() => setFocus(4)} isFocused={focus === 4} />
+        <NumberInput id="input-nr-guests" caption="Number of guests" min={1} max={30} def={1} />
+        <RadioInput id="input-seating" caption="Seating" />
+        <InputBase id="input-date" caption="Date" />
+        <InputBase id="input-time" caption="Time" />
+        <InputBase id="input-occasion" caption="Occasion" isRequired={false} />
       </>
     )
   }
@@ -44,3 +41,5 @@ const Reserve = () => {
 }
 
 export default Reserve;
+
+//next thing I want to do is to restore form focus to normal state... We don't need to keep track of focus manually.
