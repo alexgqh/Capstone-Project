@@ -45,7 +45,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     inputRef.current?.select();
   }
   const handleKeyUp = () => {
-    const timeout = 1000;
+    const timeout = 500;
 
     if (inputTimeoutIDRef.current) {
       clearTimeout(inputTimeoutIDRef.current);
@@ -84,15 +84,18 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
         >
           <img src={decEnabled ? ChevronDownReg : ChevronDownFaded} draggable={false} />
         </button>
-        <input
-          className="number-input input-font"
-          type="number"
-          value={value} min={min} max={max}
-          onChange={handleValueChange}
-          onClick={selectInputText}
-          onKeyUp={handleKeyUp}
-          ref={inputRef}
-        />
+        <div className="number-input-container">
+          <input
+            className="number-input input-font"
+            type="number"
+            value={value} min={min} max={max}
+            onChange={handleValueChange}
+            onClick={selectInputText}
+            onKeyUp={handleKeyUp}
+            style={{width: `calc(${String(value).length}ch + 16px)`}}
+            ref={inputRef}
+          />
+        </div>
         <button
           className={`number-input-incrementor${incEnabled ? "" : " disable-pointer"}`}
           onClick={handleIncrement}

@@ -13,6 +13,7 @@ input[type="number"] {
   padding-block: 0px;
   border-radius: 16px;
   height: 57px;
+  align-content: center;
   /* outline: none; */
 }
 
@@ -38,14 +39,24 @@ input[type="number"] {
   height: 100%;
 }
 
+.number-input-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 44px;
+}
 .number-input {
   text-align: center;
-  width: 100%;
-  flex: 1;
+  border-radius: 12px;
+}
+.number-input:focus {
+  background-color: var(--color-secondary-2);
+  /* color: var(--color-highlight-1); */
 }
 .number-input::selection {
-  /* background-color: transparent; */
+  background-color: transparent;
 }
+
 .disable-pointer {
   cursor: default !important;
 }
