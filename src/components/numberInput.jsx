@@ -59,7 +59,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     }
 
     const timeoutFunction = () => {
-      inputRef.current?.select();
+      if (isFocused) inputRef.current?.select();
       inputTimeoutIDRef.current = null;
     }
 
