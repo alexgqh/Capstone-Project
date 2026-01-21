@@ -23,7 +23,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
   const incVal = () => setValue(prev => prev < max ? parseInt(prev) + 1 : max);
 
   const selectInputText = () => {
-    setTimeout(()=>inputRef.current?.select(), 1);
+    setTimeout(() => inputRef.current?.select(), 1);
   }
   const handleDecrement = (e) => {
     e.preventDefault();
@@ -59,26 +59,16 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     }
 
     const timeoutFunction = () => {
-      if (isFocused) inputRef.current?.select();
+      function isInputFocused() {
+        if (!inputRef.current) return false;
+        return document.activeElement === inputRef.current;
+      }
+      if (isFocused || isInputFocused()) inputRef.current?.select();
       inputTimeoutIDRef.current = null;
     }
 
     inputTimeoutIDRef.current = setTimeout(timeoutFunction, timeout);
   }
-
-  //Listen for arrow key presses
-  useEffect(() => {
-    const incKeys = ["ArrowUp", "ArrowRight"];
-    const decKeys = ["ArrowDown", "ArrowLeft"];
-
-    const handleKeyDown = (e) => {
-      if (!isFocused) return;
-      if (incKeys.includes(e.key)) incVal();
-      if (decKeys.includes(e.key)) decVal();
-    }
-    inputRef.current?.addEventListener('keydown', handleKeyDown);
-    return () => inputRef.current?.removeEventListener('keydown', handleKeyDown);
-  }, [isFocused]);
 
   return (
     <InputBase id={id} caption={caption} isRequired={isRequired} style={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus}>

@@ -64,6 +64,7 @@ input[type="number"] {
 .radio-layout {
   display: flex;
   justify-content: space-around;
+  outline: none;
 }
 .radio-group {
   display: flex;

@@ -5,7 +5,7 @@ const FocusContext = createContext();
 
 export const useIsFocused = () => useContext(FocusContext);
 
-const InputBase = ({ id, children, caption, style, onFocus, isRequired = true }) => {
+const InputBase = ({ id, children, caption, style, onFocus, onKeyDown, isRequired = true }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const renderRequiredAstrisk = () => {
@@ -18,6 +18,11 @@ const InputBase = ({ id, children, caption, style, onFocus, isRequired = true })
     setIsFocused(true);
     onFocus?.();
   }
+  const handleKeyDown = (e) => {
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+  }
 
   return (
     <FocusContext.Provider value={isFocused}>
@@ -27,6 +32,7 @@ const InputBase = ({ id, children, caption, style, onFocus, isRequired = true })
           className={`input-box${isFocused ? " input-focus" : ""}`}
           onFocus={handleFocus}
           onBlur={() => setIsFocused(false)}
+          onKeyDown={handleKeyDown}
           tabIndex={0}
         >
           {children}
