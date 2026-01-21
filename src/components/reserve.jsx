@@ -14,7 +14,7 @@ const Reserve = () => {
     return (
       <>
         <NumberInput id="input-nr-guests" caption="Number of guests" min={1} max={30} def={1} />
-        <RadioInput id="input-seating" caption="Seating" />
+        <RadioInput id="input-seating" caption="Seating" options={["Indoor","Outdoor"]} />
         <InputBase id="input-date" caption="Date" />
         <InputBase id="input-time" caption="Time" />
         <InputBase id="input-occasion" caption="Occasion" isRequired={false} />

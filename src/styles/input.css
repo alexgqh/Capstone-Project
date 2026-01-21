@@ -60,3 +60,30 @@ input[type="number"] {
 .disable-pointer {
   cursor: default !important;
 }
+
+.radio-layout {
+  display: flex;
+  justify-content: space-around;
+}
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.radio-button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-highlight-2);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.radio-button-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-highlight-2);
+}

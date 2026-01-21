@@ -16,7 +16,7 @@ const InputBase = ({ id, children, caption, style, onFocus, isRequired = true })
 
   const handleFocus = () => {
     setIsFocused(true);
-    onFocus();
+    onFocus?.();
   }
 
   return (
