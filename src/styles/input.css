@@ -48,7 +48,7 @@ input[type="number"] {
   text-align: center;
   border-radius: 4px;
 }
-.number-input-overwrite {
+.number-input:focus {
   background-color: var(--color-text-highlight);
   color: white;
   /* color: var(--color-highlight-1); */

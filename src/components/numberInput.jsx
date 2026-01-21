@@ -92,7 +92,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
         </button>
         <div className="number-input-container">
           <input
-            className="number-input input-font number-input-overwrite"
+            className="number-input input-font"
             type="number"
             value={value} min={min} max={max}
             onChange={handleValueChange}
