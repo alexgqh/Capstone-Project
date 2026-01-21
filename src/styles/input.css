@@ -4,7 +4,7 @@ input[type="number"] {
 
 .input-caption {
   padding-left: 8px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .input-box {
@@ -14,7 +14,6 @@ input[type="number"] {
   border-radius: 16px;
   height: 57px;
   align-content: center;
-  /* outline: none; */
 }
 
 .input-font {
@@ -47,10 +46,11 @@ input[type="number"] {
 }
 .number-input {
   text-align: center;
-  border-radius: 12px;
+  border-radius: 4px;
 }
-.number-input:focus {
-  background-color: var(--color-secondary-2);
+.number-input-overwrite {
+  background-color: var(--color-text-highlight);
+  color: white;
   /* color: var(--color-highlight-1); */
 }
 .number-input::selection {

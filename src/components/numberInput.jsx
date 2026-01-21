@@ -51,7 +51,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     inputRef.current?.select();
   }
   const handleKeyUp = () => {
-    const timeout = 500;
+    const timeout = 750;
 
     if (inputTimeoutIDRef.current) {
       clearTimeout(inputTimeoutIDRef.current);
@@ -92,7 +92,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
         </button>
         <div className="number-input-container">
           <input
-            className="number-input input-font"
+            className="number-input input-font number-input-overwrite"
             type="number"
             value={value} min={min} max={max}
             onChange={handleValueChange}
