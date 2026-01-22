@@ -33,7 +33,7 @@ const Confirm = ({ title, message, onCancel, onConfirm, confirmIsCTA = true, opt
   }, []);
 
   return (
-    <div className="confirm-mask">
+    <div className="fullscreen-mask confirm-layout">
       <form className="confirm-box padding-inline" ref={mainWindowArea}>
         <h1 className="color-charcoal">{title}</h1>
         <p className="color-charcoal">{message}</p>

@@ -5,7 +5,7 @@ const FocusContext = createContext();
 
 export const useIsFocused = () => useContext(FocusContext);
 
-const InputBase = ({ id, children, caption, style, onFocus, onKeyDown, isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, isRequired = true }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const renderRequiredAstrisk = () => {
@@ -18,21 +18,36 @@ const InputBase = ({ id, children, caption, style, onFocus, onKeyDown, isRequire
     setIsFocused(true);
     onFocus?.();
   }
+  const handleBlur = () => {
+    setIsFocused(false);
+    onBlur?.();
+  }
   const handleKeyDown = (e) => {
     if (onKeyDown) {
       onKeyDown(e);
     }
   }
 
+  function getClassName() {
+    let ret = "input-box";
+    if (isFocused) ret += " input-focus";
+    if (className) ret += ` ${className}`;
+    return ret;
+  }
+
+  const fieldID = id + "-field";
+
   return (
     <FocusContext.Provider value={isFocused}>
       <div id={id} className="input-container" style={style}>
-        <p className="input-caption color-green">{caption}{renderRequiredAstrisk()}</p>
+        <label className="input-caption color-green" htmlFor={fieldID}>{caption}{renderRequiredAstrisk()}</label>
         <div
-          className={`input-box${isFocused ? " input-focus" : ""}`}
+          id={fieldID}
+          className={getClassName()}
           onFocus={handleFocus}
-          onBlur={() => setIsFocused(false)}
+          onBlur={handleBlur}
           onKeyDown={handleKeyDown}
+          onClick={onClick}
           tabIndex={0}
         >
           {children}

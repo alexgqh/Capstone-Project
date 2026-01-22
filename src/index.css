@@ -199,6 +199,16 @@ input[type=number] {
   height: 100vh;
 }
 
+.fullscreen-mask {
+  cursor: default;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-mask);
+}
+
 /*----------DEFINE VERTICAL LAYOUT-----------*/
 
 #root {
