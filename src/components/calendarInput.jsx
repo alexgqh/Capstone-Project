@@ -5,8 +5,6 @@ import { useState, useRef } from 'react';
 
 const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) => {
   const [expanded, setExpanded] = useState(false);
-  const [month, setMonth] = useState(null);
-  const [year, setYear] = useState(null);
   const [dateSelected, setDateSelected] = useState(null);
 
   const dropdownRef = useRef();
@@ -31,13 +29,13 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) 
 
   return (
   <>
-    {expanded && <div className="fullscreen-mask" />}
-    <InputBase id={id} className="input-calendar-base" caption={caption} onClick={handleClick} onBlur={() => setExpanded(false)} style={expanded ? {zIndex: "1000"} : {}}>
+    {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
+    <InputBase id={id} className="input-calendar-base" caption={caption} onClick={handleClick} style={expanded ? {zIndex: "1000"} : {}}>
       <span className="input-calendar">
         {dateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
-      {expanded && <CalendarDropdown month={month} setMonth={setMonth} year={year} setYear={setYear} ref={dropdownRef}/>}
+      {expanded && <CalendarDropdown dateSelected={dateSelected} setDateSelected={setDateSelected} ref={dropdownRef}/>}
     </InputBase>
   </>);
 }

@@ -28,8 +28,8 @@ const Confirm = ({ title, message, onCancel, onConfirm, confirmIsCTA = true, opt
         onCancel();
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mouseup', handleClickOutside);
+    return () => document.removeEventListener('mouseup', handleClickOutside);
   }, []);
 
   return (

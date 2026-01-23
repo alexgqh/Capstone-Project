@@ -121,12 +121,19 @@ input[type="number"] {
 }
 .calendar-dropdown-title {
   display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: top;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
 }
 .calendar-day-label {
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.calendar-month {
+  margin-bottom: 4px;
+}
+.calendar-month-arrow {
+  background-color: transparent;
 }
 .calendar-dropdown-grid {
   margin-top: 1rem;
