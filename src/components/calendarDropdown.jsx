@@ -19,41 +19,21 @@ const CalendarDropdown = ({ date, setDate, month, setMonth, year, setYear, ref }
 
   function getDaysOfYear() {
     let rows = [];
+    let date = new Date(year, month, 1);
+    date.setDate(date.getDate() - date.getDay());
+    const is4weeks = ((date.getDay() === 0) && (getDaysInMonth(year, month) === 28));
+    const totalWeeks = is4weeks ? 4 : 5;
 
-    //get month
-    const currentDate = new Date(year, month);
+    for (let week = 1; week <= totalWeeks; week++) {
+      let row = [];
 
-    //get date: 1st of month
-    const firstOfMonth = new Date(year, month, 1);
-
-    alert(getDaysInMonth(year, month));
-
-    //save days
-    {
-      let date = null;
-      const firstOfMonthDOW = firstOfMonth.getDay(); //The day of the week (0=Sun)
-      const daysInMonth = getDaysInMonth(year, month);
-      let skipRow5 = false;
-      for (let i = 1; i++; i <= 5) {
-        if (skipRow5 && i === 5) break
-
-        let row = []
-        for (let j = 0; j++; j < 7) {
-          if (date === null) {
-            if (firstOfMonthDOW === j) {
-              date = j + 1
-            }
-            row.push(date)
-          } else {
-            if (date > daysInMonth) {
-              row.push(null)
-            } else {
-              row.push(date++)
-            }
-          }
-        }
-        rows.push(row);
+      for (let day = 1; day <= 7; day++) {
+        const dayOfMonth = date.getDate();
+        row.push(dayOfMonth);
+        date.setDate(dayOfMonth + 1);
       }
+
+      rows.push(row);
     }
 
     return rows;
