@@ -29,6 +29,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
   }
 
   function renderDays() {
+    const todaysDate = new Date();
     let date = new Date(viewingMonth);
     let days = [];
 
@@ -47,17 +48,17 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
           totalWeeks = 4;
         }
       }
-
       //Check if this month takes 6 rows to display properly
-      if (totalWeeks > 4) {
-        if (date.getDay() === 5) {
-          if (getDaysInMonth(date) === 31) {
-            totalWeeks = 6;
-          }
-        } else if (date.getDay() === 6) {
-          if (getDaysInMonth(date) >= 30) {
-            totalWeeks = 6;
-          }
+      else if (date.getDay() === 5) {
+        //First of month is a Friday
+        if (getDaysInMonth(date) === 31) {
+          totalWeeks = 6;
+        }
+      }
+      else if (date.getDay() === 6) {
+        //First of month is a Saturday
+        if (getDaysInMonth(date) >= 30) {
+          totalWeeks = 6;
         }
       }
     }
@@ -65,11 +66,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
     //Start first row from Sunday, even if it was the previous month
     date.setDate(date.getDate() - date.getDay());
 
-    //Remember if this is a previous month or next month
-    let isPrev = true;
-    let isNext = false;
-
-    //Loop by row (1st row to 4th or 5th)
+    //Loop by row (1st row to 4th, 5th or 6th)
     for (let week = 1; week <= totalWeeks; week++) {
 
       //Loop by day of week -- Sunday through Saturday
@@ -77,18 +74,14 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
         //Get day of month as a number (1-31)
         const dayOfMonth = date.getDate();
 
-        //Update isPrev / isNext variables
-        if (isPrev) {
-          if (dayOfMonth === 1) isPrev = false;
-        } else if (!isNext) {
-          if (dayOfMonth === 1) isNext = true;
-        }
+        //Is this day from the previous or next month, or is it a part of the focused month?
+        const isViewedMonth = (date.getMonth() === viewingMonth.getMonth());
 
         //Render button based on this information
         {
           //Init class
           let className = "calendar-day";
-          if (isPrev || isNext) {
+          if (!isViewedMonth) {
             className += " calendar-day-light";
             if (datesMatch(date, dateSelected)) {
               className += " calendar-day-light-active";
@@ -100,16 +93,22 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
               className += " calendar-day-heavy-active";
             }
           }
+          if (datesMatch(date, todaysDate)) {
+            className += " calendar-day-today";
+          }
+          if (datesMatch(date, dateSelected)) {
+            className += " calendar-day-selected";
+          }
 
           //Init key
           let key = "calendar-day-";
-          if (isPrev) key += "prev-"
-          else if (isNext) key += "next-"
+          if (!isViewedMonth) key += "peeking-"
           key += dayOfMonth;
 
           //Init onClick
+          const thisDate = new Date(date);
           const onClick = () => {
-            setDateSelected(date);
+            setDateSelected(thisDate);
             setExpanded(false);
           }
 

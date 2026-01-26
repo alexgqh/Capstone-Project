@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 
 const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) => {
   const [expanded, setExpanded] = useState(false);
-  const [dateSelected, setDateSelected] = useState(new Date());
+  const [dateSelected, setDateSelected] = useState();
 
   const dropdownRef = useRef();
 
@@ -21,7 +21,14 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) 
 
   const dateOrPlaceholder = () => {
     if (dateSelected) {
-      return <p className="input-font">{dateSelected.toLocaleDateString('en-US',{ weekday:"short",month:"long",day:"numeric",year:"numeric" })}</p>
+      const options = {
+        //https://www.w3schools.com/jsref/jsref_tolocaledatestring.asp
+        weekday: "short",
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      }
+      return <p className="input-font">{dateSelected.toLocaleDateString('en-US', options)}</p>
     } else {
       return <p className="input-font input-placeholder">{placeholder}</p>
     }
