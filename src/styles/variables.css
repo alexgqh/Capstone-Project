@@ -12,4 +12,5 @@
   --color-highlight-2: #333333;
   --color-text-highlight: #3367D1;
   --color-mask: hsl(from var(--color-highlight-2) h s l / 0.5);
+  --color-bg: hsl(from var(--color-highlight-2) h s l / 0.15);
 }
