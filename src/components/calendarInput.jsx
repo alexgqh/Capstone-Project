@@ -3,7 +3,7 @@ import InputBase from './inputBase';
 import CalendarDropdown from './calendarDropdown';
 import { useState, useRef } from 'react';
 
-const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) => {
+const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) => {
   const [expanded, setExpanded] = useState(false);
   const [dateSelected, setDateSelected] = useState();
 

@@ -146,13 +146,20 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
       <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt="Left arrow"/></button>
     );
   }
-  // function renderRightArrow() {
+  function renderRightArrow() {
+    const enabled = (viewingMonth.getMonth() !== endDate.getMonth());
+    const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
+    const src = enabled ? IconArrowRight : IconArrowRightDisabled;
+    const handleClick = (e) => {
+      e.preventDefault();
+      if (enabled) {
+        incMonth();
+      }
+    }
 
-  // }
-
-  const handleMonthRight = (e) => {
-    e.preventDefault();
-    incMonth();
+    return (
+      <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt="Right arrow"/></button>
+    );
   }
 
   return (
@@ -160,7 +167,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
       <div className={`calendar-dropdown-title`}>
         {renderLeftArrow()}
         <h3 className={`calendar-month color-green ${isCurrentMonth ? "underline" : ""}`}>{monthSelectedLong}</h3>
-        <button onClick={handleMonthRight} tabIndex={-1} className="calendar-month-arrow"><img src={IconArrowRight} alt="Right arrow"/></button>
+        {renderRightArrow()}
       </div>
       <div className="calendar-dropdown-grid">
         {["S","M","T","W","Th","F","Sa"].map(label => <span className="calendar-day-label">{label}</span>)}
