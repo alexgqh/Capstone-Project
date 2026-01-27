@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import IconArrowLeft from '../assets/icon-arrow-left.svg';
 import IconArrowRight from '../assets/icon-arrow-right.svg';
+import IconArrowLeftDisabled from '../assets/icon-arrow-left-disabled.svg';
+import IconArrowRightDisabled from '../assets/icon-arrow-right-disabled.svg';
 
 function getDaysInMonth(date) {
   //getMonth + 1 goes to the next month, and passing 0 as the date goes to the previous day (1 would be 1st of month, 2 is 2nd, so 0 is day before 1st of month)
@@ -126,22 +128,38 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
     return days;
   }
 
-  const handleMonthLeft = (e) => {
-    e.preventDefault();
-    decMonth();
+  const isCurrentMonth = todaysDate.getMonth() === viewingMonth.getMonth();
+  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
+
+  function renderLeftArrow() {
+    const enabled = !isCurrentMonth;
+    const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
+    const src = enabled ? IconArrowLeft : IconArrowLeftDisabled;
+    const handleClick = (e) => {
+      e.preventDefault();
+      if (enabled) {
+        decMonth();
+      }
+    }
+
+    return (
+      <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt="Left arrow"/></button>
+    );
   }
+  // function renderRightArrow() {
+
+  // }
+
   const handleMonthRight = (e) => {
     e.preventDefault();
     incMonth();
   }
 
-  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
-
   return (
     <div className="input-calendar-dropdown" ref={ref}>
       <div className={`calendar-dropdown-title`}>
-        <button onClick={handleMonthLeft} tabIndex={-1} className="calendar-month-arrow"><img src={IconArrowLeft} alt="Left arrow"/></button>
-        <h3 className={`calendar-month color-green ${todaysDate.getMonth() === viewingMonth.getMonth() ? "underline" : ""}`}>{monthSelectedLong}</h3>
+        {renderLeftArrow()}
+        <h3 className={`calendar-month color-green ${isCurrentMonth ? "underline" : ""}`}>{monthSelectedLong}</h3>
         <button onClick={handleMonthRight} tabIndex={-1} className="calendar-month-arrow"><img src={IconArrowRight} alt="Right arrow"/></button>
       </div>
       <div className="calendar-dropdown-grid">
