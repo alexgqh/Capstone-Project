@@ -131,43 +131,30 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
   const isCurrentMonth = todaysDate.getMonth() === viewingMonth.getMonth();
   const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
 
-  function renderLeftArrow() {
-    const enabled = !isCurrentMonth;
+  function renderArrow(isLeft) {
+    const enabled = isLeft ? (!isCurrentMonth) : (viewingMonth.getMonth() !== endDate.getMonth());
     const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
-    const src = enabled ? IconArrowLeft : IconArrowLeftDisabled;
+    const src = isLeft ? (enabled ? IconArrowLeft : IconArrowLeftDisabled) : (enabled ? IconArrowRight : IconArrowRightDisabled);
+    const alt = isLeft ? "Left arrow" : "Right arrow";
     const handleClick = (e) => {
       e.preventDefault();
       if (enabled) {
-        decMonth();
+        if (isLeft) decMonth();
+        else incMonth();
       }
     }
 
     return (
-      <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt="Left arrow"/></button>
-    );
-  }
-  function renderRightArrow() {
-    const enabled = (viewingMonth.getMonth() !== endDate.getMonth());
-    const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
-    const src = enabled ? IconArrowRight : IconArrowRightDisabled;
-    const handleClick = (e) => {
-      e.preventDefault();
-      if (enabled) {
-        incMonth();
-      }
-    }
-
-    return (
-      <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt="Right arrow"/></button>
+      <button className={className} onClick={handleClick} tabIndex={-1}><img src={src} alt={alt}/></button>
     );
   }
 
   return (
     <div className="input-calendar-dropdown" ref={ref}>
       <div className={`calendar-dropdown-title`}>
-        {renderLeftArrow()}
+        {renderArrow(true)}
         <h3 className={`calendar-month color-green ${isCurrentMonth ? "underline" : ""}`}>{monthSelectedLong}</h3>
-        {renderRightArrow()}
+        {renderArrow(false)}
       </div>
       <div className="calendar-dropdown-grid">
         {["S","M","T","W","Th","F","Sa"].map(label => <span className="calendar-day-label">{label}</span>)}
