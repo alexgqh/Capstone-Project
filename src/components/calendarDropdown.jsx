@@ -18,6 +18,12 @@ function datesMatch(date1, date2) {
   return true;
 }
 
+function isDateWithinRange(date, start, end) {
+  start = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  end = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  return (date >= start && date <= end);
+}
+
 const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingThresholdDays, ref }) => {
   const todaysDate = new Date();
   const endDate = new Date(todaysDate);
@@ -81,6 +87,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
 
         //Render button based on this information
         {
+          const thisDate = new Date(date);
           let isToday = false;
 
           //Init class
@@ -104,6 +111,10 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
           if (datesMatch(date, dateSelected)) {
             className += " calendar-day-selected";
           }
+          if (!isDateWithinRange(thisDate, todaysDate, endDate)) {
+            //Is this a valid day (between today's date and end date)?
+            className += " color-peach";
+          }
 
           //Init key
           let key = "calendar-day-";
@@ -111,7 +122,6 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
           key += dayOfMonth;
 
           //Init onClick
-          const thisDate = new Date(date);
           const onClick = () => {
             setDateSelected(thisDate);
             setExpanded(false);
