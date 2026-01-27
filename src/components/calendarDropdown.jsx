@@ -88,46 +88,86 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
         //Render button based on this information
         {
           const thisDate = new Date(date);
-          let isToday = false;
+          const isEnabled = isDateWithinRange(thisDate, todaysDate, endDate);
+          const isToday = datesMatch(date, todaysDate);
+          const isSelected = datesMatch(date, dateSelected);
+          let style = {};
+          let title = "";
+          let handleClick;
+
+          //Init class and style
+          let className = "calendar-day";
+          if (isEnabled) {
+            //This is a clickable day (within the acceptable date range)
+            title = date.toLocaleDateString('en-US', { weekday: "short", month: "long", day: "numeric", year: "numeric"})
+            if (isViewedMonth) {
+              className += " calendar-day-heavy"
+              if (isSelected) {
+                className += " calendar-day-heavy-active"
+              }
+            } else {
+              className += " calendar-day-light"
+              if (isSelected) {
+                className += " calendar-day-light-active"
+              }
+            }
+
+            if (isToday) {
+              className += " underline"
+              title += " (today)"
+            }
+
+            handleClick = (e) => {
+              e.preventDefault();
+              setDateSelected(thisDate);
+              setExpanded(false);
+            }
+          } else {
+            //This is not a clickable day (prior to today or after reservation days threshold)
+            className += " disable-pointer"
+            if (isViewedMonth) {
+              style.backgroundColor = "var(--color-bg)"
+            } else {
+              style.border = "3px solid var(--color-bg)"
+            }
+
+            handleClick = (e) => {
+              e.preventDefault();
+            }
+          }
 
           //Init class
-          let className = "calendar-day";
-          if (!isViewedMonth) {
-            className += " calendar-day-light";
-            if (datesMatch(date, dateSelected)) {
-              className += " calendar-day-light-active";
-            }
-          }
-          else {
-            className += " calendar-day-heavy";
-            if (datesMatch(date, dateSelected)) {
-              className += " calendar-day-heavy-active";
-            }
-          }
-          if (datesMatch(date, todaysDate)) {
-            className += " underline";
-            isToday = true;
-          }
-          if (datesMatch(date, dateSelected)) {
-            className += " calendar-day-selected";
-          }
-          if (!isDateWithinRange(thisDate, todaysDate, endDate)) {
-            //Is this a valid day (between today's date and end date)?
-            className += " color-peach";
-          }
+          // if (!isViewedMonth) {
+          //   className += " calendar-day-light";
+          //   if (datesMatch(date, dateSelected)) {
+          //     className += " calendar-day-light-active";
+          //   }
+          // }
+          // else {
+          //   className += " calendar-day-heavy";
+          //   if (datesMatch(date, dateSelected)) {
+          //     className += " calendar-day-heavy-active";
+          //   }
+          // }
+          // if (!enabled) {
+          //   //Is this a valid day (between today's date and end date)?
+          //   className += " calendar-day-disabled";
+          // } else {
+          //   if (datesMatch(date, todaysDate)) {
+          //     className += " underline";
+          //     isToday = true;
+          //   }
+          //   if (datesMatch(date, dateSelected)) {
+          //     className += " calendar-day-selected";
+          //   }
+          // }
 
           //Init key
           let key = "calendar-day-";
           if (!isViewedMonth) key += "peeking-"
           key += dayOfMonth;
 
-          //Init onClick
-          const onClick = () => {
-            setDateSelected(thisDate);
-            setExpanded(false);
-          }
-
-          days.push(<span className={className} key={key} onClick={onClick} title={isToday ? "Today's date" : ""}>{dayOfMonth}</span>);
+          days.push(<button className={className} key={key} onClick={handleClick} title={title} style={style}>{dayOfMonth}</button>);
         }
 
         //Increment day and go to next iteration
