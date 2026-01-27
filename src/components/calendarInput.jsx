@@ -42,7 +42,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 30 }) 
         {dateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
-      {expanded && <CalendarDropdown dateSelected={dateSelected} setDateSelected={setDateSelected} setExpanded={setExpanded} ref={dropdownRef}/>}
+      {expanded && <CalendarDropdown dateSelected={dateSelected} setDateSelected={setDateSelected} setExpanded={setExpanded} bookingThresholdDays={bookingThresholdDays} ref={dropdownRef}/>}
     </InputBase>
   </>);
 }

@@ -16,10 +16,11 @@ function datesMatch(date1, date2) {
   return true;
 }
 
-const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) => {
-  let workingDate = dateSelected ? new Date(dateSelected) : new Date();
-  const [viewingMonth, setViewingMonth] = useState(workingDate);
-  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "2-digit" });
+const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingThresholdDays, ref }) => {
+  const todaysDate = new Date();
+  const endDate = new Date(todaysDate);
+  endDate.setDate(endDate.getDate() + bookingThresholdDays);
+  const [viewingMonth, setViewingMonth] = useState(new Date(dateSelected ? dateSelected : todaysDate));
 
   function decMonth() {
     setViewingMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1));
@@ -29,7 +30,6 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
   }
 
   function renderDays() {
-    const todaysDate = new Date();
     let date = new Date(viewingMonth);
     let days = [];
 
@@ -79,6 +79,8 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
 
         //Render button based on this information
         {
+          let isToday = false;
+
           //Init class
           let className = "calendar-day";
           if (!isViewedMonth) {
@@ -94,7 +96,8 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
             }
           }
           if (datesMatch(date, todaysDate)) {
-            className += " calendar-day-today";
+            className += " underline";
+            isToday = true;
           }
           if (datesMatch(date, dateSelected)) {
             className += " calendar-day-selected";
@@ -112,7 +115,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
             setExpanded(false);
           }
 
-          days.push(<span className={className} key={key} onClick={onClick}>{dayOfMonth}</span>);
+          days.push(<span className={className} key={key} onClick={onClick} title={isToday ? "Today's date" : ""}>{dayOfMonth}</span>);
         }
 
         //Increment day and go to next iteration
@@ -132,11 +135,13 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, ref }) =
     incMonth();
   }
 
+  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
+
   return (
     <div className="input-calendar-dropdown" ref={ref}>
-      <div className="calendar-dropdown-title">
+      <div className={`calendar-dropdown-title`}>
         <button onClick={handleMonthLeft} tabIndex={-1} className="calendar-month-arrow"><img src={IconArrowLeft} alt="Left arrow"/></button>
-        <h3 className="calendar-month color-green">{monthSelectedLong}</h3>
+        <h3 className={`calendar-month color-green ${todaysDate.getMonth() === viewingMonth.getMonth() ? "underline" : ""}`}>{monthSelectedLong}</h3>
         <button onClick={handleMonthRight} tabIndex={-1} className="calendar-month-arrow"><img src={IconArrowRight} alt="Right arrow"/></button>
       </div>
       <div className="calendar-dropdown-grid">

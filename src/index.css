@@ -209,6 +209,10 @@ input[type=number] {
   background-color: var(--color-mask);
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 /*----------DEFINE VERTICAL LAYOUT-----------*/
 
 #root {
