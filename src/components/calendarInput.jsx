@@ -11,6 +11,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
 
   const handleClick = (e) => {
     if (!dropdownRef.current) {
+      if (!dateSelected) setDateSelected(new Date());
       setExpanded(prev => !prev);
     } else {
       if (!dropdownRef.current.contains(e.target)) {
