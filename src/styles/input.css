@@ -237,6 +237,7 @@ input[type="number"] {
 }
 .combobox-dropdown-item {
   padding-inline: 1.5rem;
+  cursor: pointer;
 }
 .combobox-dropdown-item:hover {
   background-color: var(--color-primary-2);
