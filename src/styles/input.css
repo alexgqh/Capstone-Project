@@ -173,6 +173,9 @@ input[type="number"] {
   /*should be exactly the same as the above*/
   border: 3px solid var(--color-primary-1);
 }
+.calendar-day-light-active:hover {
+  border: 3px solid var(--color-primary-1);
+}
 .calendar-day-heavy {
   background-color: var(--color-secondary-2);
 }
