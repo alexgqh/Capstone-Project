@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef } from "react"
 import InputBase from "./inputBase"
 
 function getTimeFromIndex(index) {
@@ -29,6 +29,7 @@ function getTimeFromIndex(index) {
 const TimeInput = ({ id, placeholder }) => {
   const [expanded, setExpanded] = useState(false);
   const [timeSelected, setTimeSelected] = useState(null);
+  const dropdownRef = useRef();
 
   function renderTimeDropdownItems() {
     let idx = 0;
@@ -39,15 +40,17 @@ const TimeInput = ({ id, placeholder }) => {
         const handleClick = (e) => {
           e.preventDefault();
           setTimeSelected(thisValue);
-          alert('setting time to '+thisValue)
+          setExpanded(false);
         }
+        const time = getTimeFromIndex(idx++);
         ret.push(
           <button
             className="input-item time-dropdown-item time-dropdown-item-active"
             key={"time-dropdown-item-"+i+j}
             onClick={handleClick}
+            title={time + " PM (CST)"}
           >
-            {getTimeFromIndex(idx++)}
+            {time}
           </button>
         )
       }
@@ -56,19 +59,19 @@ const TimeInput = ({ id, placeholder }) => {
   }
 
   const handleClick = (e) => {
+    if (expanded && dropdownRef.current?.contains(e.target)) return
     setExpanded(!expanded)
   }
 
-  return (
-    <InputBase id={id} caption="Time" onClick={handleClick} placeholder={timeSelected === null ? placeholder : ''} style={{position:"relative"}}>
-      {timeSelected && <p className="input-font">{getTimeFromIndex(timeSelected)+" PM"}</p>}
-      {expanded &&
-      <div className="input-dropdown time-dropdown" role="combobox">
+  return (<>
+    {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
+    <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} placeholder={timeSelected === null ? placeholder : ''}>
+      {timeSelected !== null && <p className="input-font">{getTimeFromIndex(timeSelected)+" PM (CST)"}</p>}
+      {expanded && <div className="input-dropdown time-dropdown" role="combobox" ref={dropdownRef}>
         {renderTimeDropdownItems()}
-      </div>
-      }
+      </div>}
     </InputBase>
-  )
+    </>)
 }
 
 export default TimeInput

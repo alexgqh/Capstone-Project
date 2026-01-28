@@ -94,14 +94,14 @@ input[type="number"] {
   background-color: var(--color-highlight-2);
 }
 
-.input-calendar-base {
-  cursor: pointer;
-  position: relative;
-}
 .input-calendar {
   cursor: inherit;
   display: flex;
   justify-content: space-between;
+}
+.input-dropdown-parent {
+  cursor: pointer;
+  position: relative;
 }
 .input-dropdown {
   cursor: default;

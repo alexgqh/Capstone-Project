@@ -50,8 +50,7 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
           onClick={onClick}
           tabIndex={0}
         >
-          {/* {placeholder ? <span className="input-font input-placeholder">{placeholder}</span> : children} */}
-          {<span className="input-font input-placeholder">{placeholder}</span>}
+          {placeholder && <span className="input-font input-placeholder">{placeholder}</span>}
           {children}
         </div>
       </div>
