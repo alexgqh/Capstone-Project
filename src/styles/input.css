@@ -113,6 +113,17 @@ input[type="number"] {
   z-index: 1000;
   padding: 1rem;
 }
+.input-item {
+  cursor: pointer;
+  transition: 100ms;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+}
 .input-calendar-dropdown {
   width: 250px;
   border-radius: 0px 0px 16px 16px;
@@ -147,17 +158,9 @@ input[type="number"] {
   gap: 4px;
 }
 .calendar-day {
-  width: 100%;
-  height: 100%;
-  align-content: center;
-  text-align: center;
   border-radius: 8px;
-  box-sizing: border-box;
   padding-block: 4px;
   border: 3px solid transparent;
-  transition: 100ms;
-  font-family: 'Karla', sans-serif;
-  font-size: 16px;
   color: var(--color-highlight-2);
 }
 .calendar-day-light {
@@ -207,7 +210,6 @@ input[type="number"] {
 .time-dropdown-item {
   border-radius: 16px;
   padding: .5rem;
-  text-align: center;
 }
 .time-dropdown-item-inactive {
   background-color: var(--color-bg);

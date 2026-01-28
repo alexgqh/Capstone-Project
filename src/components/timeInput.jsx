@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InputBase from "./inputBase"
 
 function getTimeFromIndex(index) {
@@ -26,23 +26,47 @@ function getTimeFromIndex(index) {
   }
 }
 
-const TimeInput = ({ id }) => {
+const TimeInput = ({ id, placeholder }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [timeSelected, setTimeSelected] = useState(null);
 
-  function renderDummyElements() {
+  function renderTimeDropdownItems() {
     let idx = 0;
     let ret = []
     for (let i=1; i<=4; i++) {
       for (let j=1; j<=5; j++) {
-        ret.push(<div className="time-dropdown-item time-dropdown-item-active" key={"asdf-"+i+j}>{getTimeFromIndex(idx++)}</div>)
+        const thisValue = idx;
+        const handleClick = (e) => {
+          e.preventDefault();
+          setTimeSelected(thisValue);
+          alert('setting time to '+thisValue)
+        }
+        ret.push(
+          <button
+            className="input-item time-dropdown-item time-dropdown-item-active"
+            key={"time-dropdown-item-"+i+j}
+            onClick={handleClick}
+          >
+            {getTimeFromIndex(idx++)}
+          </button>
+        )
       }
     }
     return ret
   }
+
+  const handleClick = (e) => {
+    setExpanded(!expanded)
+  }
+
   return (
-    <InputBase id={id} caption="Time" style={{position:"relative"}}>
+    <InputBase id={id} caption="Time" onClick={handleClick} placeholder={timeSelected === null ? placeholder : ''} style={{position:"relative"}}>
+      {timeSelected && <p className="input-font">{getTimeFromIndex(timeSelected)+" PM"}</p>}
+      {expanded &&
       <div className="input-dropdown time-dropdown" role="combobox">
-        {renderDummyElements()}
+        {renderTimeDropdownItems()}
       </div>
+      }
     </InputBase>
   )
 }

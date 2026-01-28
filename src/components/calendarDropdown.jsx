@@ -96,7 +96,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
           let handleClick;
 
           //Init class and style
-          let className = "calendar-day";
+          let className = "input-item calendar-day";
           if (isEnabled) {
             //This is a clickable day (within the acceptable date range)
             title = date.toLocaleDateString('en-US', { weekday: "short", month: "long", day: "numeric", year: "numeric"})

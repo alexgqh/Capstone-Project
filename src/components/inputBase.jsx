@@ -5,7 +5,7 @@ const FocusContext = createContext();
 
 export const useIsFocused = () => useContext(FocusContext);
 
-const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, placeholder="", isRequired = true }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const renderRequiredAstrisk = () => {
@@ -29,7 +29,7 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
   }
 
   function getClassName() {
-    let ret = "input-box";
+    let ret = "input-box ";
     if (isFocused) ret += " input-focus";
     if (className) ret += ` ${className}`;
     return ret;
@@ -50,6 +50,8 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
           onClick={onClick}
           tabIndex={0}
         >
+          {/* {placeholder ? <span className="input-font input-placeholder">{placeholder}</span> : children} */}
+          {<span className="input-font input-placeholder">{placeholder}</span>}
           {children}
         </div>
       </div>
