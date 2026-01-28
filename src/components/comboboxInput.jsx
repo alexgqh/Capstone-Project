@@ -10,9 +10,12 @@ const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
   function renderDropdown() {
     function renderDropdownItems() {
       return options.map((option, i) => {
-        let className = "input-dropdown-item combobox-dropdown-item input-font"
+        let className = "input-font input-dropdown-item combobox-dropdown-item"
         if (i < options.length - 1) {
           className += " line-beneath"
+        }
+        if (i === selected) {
+          className += " combobox-dropdown-item-active"
         }
         const handleClick = () => {
           setSelected(i)

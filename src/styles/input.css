@@ -246,6 +246,14 @@ input[type="number"] {
   background-color: var(--color-primary-1);
   color: var(--color-highlight-1);
 }
+.combobox-dropdown-item-active {
+  /*should be exactly the same as the above*/
+  background-color: var(--color-primary-1);
+  color: var(--color-highlight-1);
+}
+.combobox-dropdown-item-active:hover {
+  background-color: var(--color-primary-1);
+}
 .line-beneath {
   border-bottom: 2px solid var(--color-bg);
 }
