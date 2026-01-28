@@ -225,3 +225,10 @@ input[type="number"] {
 .time-dropdown-item-active-active:hover {
   background-color: var(--color-primary-1);
 }
+/*--------------------------------------------------*/
+.combobox-dropdown {
+  height: 200px;
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
+}

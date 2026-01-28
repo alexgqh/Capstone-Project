@@ -1,10 +1,10 @@
 import "../styles/reserve.css"
 import ReserveBanner from './reserveBanner'
-import InputBase from "./inputBase"
 import NumberInput from './numberInput'
 import RadioInput from './radioInput'
 import CalendarInput from "./calendarInput"
 import TimeInput from "./timeInput"
+import ComboboxInput from "./comboboxInput"
 import Button from './button'
 import { usePage } from "../global/pageContext"
 
@@ -19,7 +19,7 @@ const Reserve = () => {
         <RadioInput id="input-seating" caption="Seating" options={["Indoor","Outdoor"]} />
         <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." />
         <TimeInput id="input-time" placeholder="Select a time..." />
-        <InputBase id="input-occasion" caption="Occasion" isRequired={false} />
+        <ComboboxInput id="input-occasion" caption="Occasion" isRequired={false} placeholder="What's the occasion? (Optional)" options={["Birthday","Engagement","Anniversary"]} />
       </>
     )
   }
