@@ -76,14 +76,17 @@ const TimeInput = ({ id, placeholder }) => {
     }
   }
 
+  let style = {}
+  if (expanded) style.zIndex = "1000"
+
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
-    <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} style={expanded ? {zIndex: "1000"} : {}}>
+    <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} style={style} role="combobox">
       <div className="input-flex">
         {renderTimeOrPlaceholder()}
         <img src={IconClock} alt="Clock icon" style={{width:"36px"}} />
       </div>
-      {expanded && <div className="input-dropdown time-dropdown" role="combobox" ref={dropdownRef}>
+      {expanded && <div className="input-dropdown time-dropdown" ref={dropdownRef}>
         {renderTimeDropdownItems()}
       </div>}
     </InputBase>
