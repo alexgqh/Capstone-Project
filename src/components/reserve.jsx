@@ -4,6 +4,7 @@ import InputBase from "./inputBase"
 import NumberInput from './numberInput'
 import RadioInput from './radioInput'
 import CalendarInput from "./calendarInput"
+import TimeInput from "./timeInput"
 import Button from './button'
 import { usePage } from "../global/pageContext"
 
@@ -17,7 +18,7 @@ const Reserve = () => {
         <NumberInput id="input-nr-guests" caption="Number of guests" min={1} max={30} def={1} />
         <RadioInput id="input-seating" caption="Seating" options={["Indoor","Outdoor"]} />
         <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." />
-        <InputBase id="input-time" caption="Time" />
+        <TimeInput id="input-time" />
         <InputBase id="input-occasion" caption="Occasion" isRequired={false} />
       </>
     )

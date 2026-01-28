@@ -136,32 +136,6 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
             }
           }
 
-          //Init class
-          // if (!isViewedMonth) {
-          //   className += " calendar-day-light";
-          //   if (datesMatch(date, dateSelected)) {
-          //     className += " calendar-day-light-active";
-          //   }
-          // }
-          // else {
-          //   className += " calendar-day-heavy";
-          //   if (datesMatch(date, dateSelected)) {
-          //     className += " calendar-day-heavy-active";
-          //   }
-          // }
-          // if (!enabled) {
-          //   //Is this a valid day (between today's date and end date)?
-          //   className += " calendar-day-disabled";
-          // } else {
-          //   if (datesMatch(date, todaysDate)) {
-          //     className += " underline";
-          //     isToday = true;
-          //   }
-          //   if (datesMatch(date, dateSelected)) {
-          //     className += " calendar-day-selected";
-          //   }
-          // }
-
           //Init key
           let key = "calendar-day-";
           if (!isViewedMonth) key += "peeking-"
