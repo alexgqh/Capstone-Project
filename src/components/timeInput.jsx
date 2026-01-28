@@ -14,7 +14,7 @@ const TimeInput = ({ id }) => {
   }
   return (
     <InputBase id={id} caption="Time" style={{position:"relative"}}>
-      <div className="time-dropdown" role="combobox">
+      <div className="input-dropdown time-dropdown" role="combobox">
         {renderDummyElements()}
       </div>
     </InputBase>

@@ -174,7 +174,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
   }
 
   return (
-    <div className="input-calendar-dropdown" ref={ref}>
+    <div className="input-dropdown input-calendar-dropdown" ref={ref}>
       <div className={`calendar-dropdown-title`}>
         {renderArrow(true)}
         <h3 className={`calendar-month color-green ${isCurrentMonth ? "underline" : ""}`}>{monthSelectedLong}</h3>

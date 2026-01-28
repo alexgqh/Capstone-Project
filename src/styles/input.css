@@ -103,21 +103,22 @@ input[type="number"] {
   display: flex;
   justify-content: space-between;
 }
-.input-calendar-dropdown {
+.input-dropdown {
   cursor: default;
-  width: 250px;
-  height: auto;
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 16px;
   background: white;
   border: 2px solid var(--color-secondary-1);
-  border-top: none;
   position: absolute;
   top: 100%;
+  z-index: 1000;
+  padding: 1rem;
+}
+.input-calendar-dropdown {
+  width: 250px;
+  border-radius: 0px 0px 16px 16px;
+  border-top: none;
   right: 16px;
   margin-top: 2px;
-  z-index: 1000;
-  padding-block: 1rem;
-  padding-inline: 1rem;
 }
 .calendar-dropdown-title {
   display: flex;
