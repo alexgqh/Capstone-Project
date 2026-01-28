@@ -73,7 +73,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     <InputBase id={id} caption={caption} isRequired={isRequired} style={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus}>
       <div className="number-input-layout">
         <button
-          className={`number-input-decrementor${decEnabled ? "" : " disable-pointer"}`}
+          className={`${decEnabled ? "" : " disable-pointer"}`}
           onClick={handleDecrement}
           tabIndex={-1}
         >
@@ -92,7 +92,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
           />
         </div>
         <button
-          className={`number-input-incrementor${incEnabled ? "" : " disable-pointer"}`}
+          className={`${incEnabled ? "" : " disable-pointer"}`}
           onClick={handleIncrement}
           tabIndex={-1}
         >

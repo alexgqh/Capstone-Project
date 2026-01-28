@@ -40,9 +40,6 @@ input[type="number"] {
 .number-input-layout > button {
   background-color: transparent;
 }
-.number-input-decrementor, .number-input-incrementor {
-  height: 100%;
-}
 
 .number-input-container {
   flex: 1;
