@@ -225,3 +225,6 @@ input[type="number"] {
   background-color: var(--color-primary-1);
   color: var(--color-highlight-1);
 }
+.time-dropdown-item-active-active:hover {
+  background-color: var(--color-primary-1);
+}

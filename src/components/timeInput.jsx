@@ -42,10 +42,13 @@ const TimeInput = ({ id, placeholder }) => {
           setTimeSelected(thisValue);
           setExpanded(false);
         }
-        const time = getTimeFromIndex(idx++);
+        const isSelected = (idx === timeSelected)
+        let className = "input-item time-dropdown-item time-dropdown-item-active"
+        if (isSelected) className += " time-dropdown-item-active-active"
+        const time = getTimeFromIndex(idx++)
         ret.push(
           <button
-            className="input-item time-dropdown-item time-dropdown-item-active"
+            className={className}
             key={"time-dropdown-item-"+i+j}
             onClick={handleClick}
             title={time + " PM (CST)"}
