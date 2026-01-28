@@ -70,7 +70,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
   }
 
   return (
-    <InputBase id={id} caption={caption} isRequired={isRequired} parentStyle={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus}>
+    <InputBase id={id} caption={caption} isRequired={isRequired} parentStyle={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus} role="spinbutton">
       <div className="number-input-layout">
         <button
           className={`${decEnabled ? "" : " disable-pointer"}`}

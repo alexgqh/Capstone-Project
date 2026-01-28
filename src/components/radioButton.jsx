@@ -6,7 +6,7 @@ const RadioButton = ({ toggledOn, onClick, children }) => {
     onClick?.();
   }
   return (
-    <span className="radio-group" onClick={handleClick}>
+    <span className="radio-group" onClick={handleClick} role="radio">
       <button className="radio-button" tabIndex={-1}>
         {toggledOn && <div className="radio-button-inner" />}
       </button>

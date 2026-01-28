@@ -160,6 +160,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
     const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
     const src = isLeft ? (enabled ? IconArrowLeft : IconArrowLeftDisabled) : (enabled ? IconArrowRight : IconArrowRightDisabled);
     const alt = isLeft ? "Left arrow" : "Right arrow";
+
     const handleClick = (e) => {
       e.preventDefault();
       if (enabled) {
@@ -174,13 +175,13 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
   }
 
   return (
-    <div className="input-dropdown input-calendar-dropdown" ref={ref}>
+    <div className="input-dropdown input-calendar-dropdown" ref={ref} role="dialog">
       <div className={`calendar-dropdown-title`}>
         {renderArrow(true)}
         <h3 className={`calendar-month color-green ${isCurrentMonth ? "underline" : ""}`}>{monthSelectedLong}</h3>
         {renderArrow(false)}
       </div>
-      <div className="calendar-dropdown-grid">
+      <div className="calendar-dropdown-grid" role="grid">
         {["S","M","T","W","Th","F","Sa"].map(label => <span className="calendar-day-label">{label}</span>)}
         {renderDays()}
       </div>

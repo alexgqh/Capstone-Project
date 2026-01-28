@@ -36,9 +36,12 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
     }
   }
 
+  let style = {}
+  if (expanded) style.zIndex = "1000"
+
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
-    <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={expanded ? {zIndex: "1000"} : {}}>
+    <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={style} role="textbox" ariaLabel="Choose Date">
       <span className="input-flex">
         {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>

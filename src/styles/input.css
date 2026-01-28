@@ -227,8 +227,6 @@ input[type="number"] {
 }
 /*--------------------------------------------------*/
 .input-combobox {
-  display: flex;
-  justify-content: space-between;
   padding-right: 0.7rem;
 }
 .combobox-dropdown {
