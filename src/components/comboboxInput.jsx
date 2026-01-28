@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import InputBase from "./inputBase"
 import Placeholder from "./placeholder"
+import IconChevron from "../assets/chevron-down-reg.svg"
 
 const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
   const [expanded, setExpanded] = useState(false)
@@ -51,7 +52,10 @@ const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
     <>
       {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)} />}
       <InputBase id={id} className="input-dropdown-parent" caption={caption} isRequired={isRequired} onClick={handleClick} role="combobox" style={style}>
-        {renderPlaceholderOrSelected()}
+        <div className="input-combobox">
+          {renderPlaceholderOrSelected()}
+          <img src={IconChevron} alt="Downward-pointing chevron" />
+        </div>
         {renderDropdown()}
       </InputBase>
     </>

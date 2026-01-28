@@ -1,6 +1,6 @@
 import '../styles/input.css'
 
-const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, role, isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, parentStyle, style, onKeyDown, onClick, role, isRequired = true }) => {
 
   const renderRequiredAstrisk = () => {
     if (isRequired) {
@@ -23,7 +23,7 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
   const fieldID = id + "-field";
 
   return (
-    <div id={id} className="input-container" style={style}>
+    <div id={id} className="input-container" style={parentStyle} >
       <label className="input-caption color-green" htmlFor={fieldID}>{caption}{renderRequiredAstrisk()}</label>
       <div
         id={fieldID}
@@ -32,6 +32,7 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
         onClick={onClick}
         tabIndex={0}
         role={role}
+        style={style}
       >
         {children}
       </div>
