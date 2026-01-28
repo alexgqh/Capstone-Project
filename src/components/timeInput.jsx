@@ -65,7 +65,7 @@ const TimeInput = ({ id, placeholder }) => {
 
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
-    <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} placeholder={timeSelected === null ? placeholder : ''}>
+    <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} placeholder={timeSelected === null ? placeholder : ''} style={expanded ? {zIndex: "1000"} : {}}>
       {timeSelected !== null && <p className="input-font">{getTimeFromIndex(timeSelected)+" PM (CST)"}</p>}
       {expanded && <div className="input-dropdown time-dropdown" role="combobox" ref={dropdownRef}>
         {renderTimeDropdownItems()}

@@ -110,7 +110,6 @@ input[type="number"] {
   border: 2px solid var(--color-secondary-1);
   position: absolute;
   top: 100%;
-  z-index: 1000;
   padding: 1rem;
 }
 .input-item {
