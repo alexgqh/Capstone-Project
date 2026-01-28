@@ -1,6 +1,7 @@
 import IconCalendar from '../assets/icon-calendar.svg';
 import InputBase from './inputBase';
 import CalendarDropdown from './calendarDropdown';
+import Placeholder from './placeholder';
 import { useState, useRef } from 'react';
 
 const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) => {
@@ -20,7 +21,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
     }
   }
 
-  const dateOrPlaceholder = () => {
+  const renderDateOrPlaceholder = () => {
     if (dateSelected) {
       const options = {
         //https://www.w3schools.com/jsref/jsref_tolocaledatestring.asp
@@ -31,7 +32,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
       }
       return <p className="input-font">{dateSelected.toLocaleDateString('en-US', options)}</p>
     } else {
-      return <p className="input-font input-placeholder">{placeholder}</p>
+      return <Placeholder>{placeholder}</Placeholder>
     }
   }
 
@@ -39,7 +40,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
     <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={expanded ? {zIndex: "1000"} : {}}>
       <span className="input-calendar">
-        {dateOrPlaceholder()}
+        {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
       {expanded && <CalendarDropdown dateSelected={dateSelected} setDateSelected={setDateSelected} setExpanded={setExpanded} bookingThresholdDays={bookingThresholdDays} ref={dropdownRef}/>}

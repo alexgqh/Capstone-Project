@@ -1,6 +1,6 @@
 import '../styles/input.css'
 
-const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, placeholder="", isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, isRequired = true }) => {
 
   const renderRequiredAstrisk = () => {
     if (isRequired) {
@@ -32,7 +32,6 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
         onClick={onClick}
         tabIndex={0}
       >
-        {placeholder && <span className="input-font input-placeholder">{placeholder}</span>}
         {children}
       </div>
     </div>
