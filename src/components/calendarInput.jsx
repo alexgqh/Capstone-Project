@@ -39,7 +39,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
     <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={expanded ? {zIndex: "1000"} : {}}>
-      <span className="input-calendar">
+      <span className="input-flex">
         {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
