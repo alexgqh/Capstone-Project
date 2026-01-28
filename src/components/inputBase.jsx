@@ -1,12 +1,6 @@
 import '../styles/input.css'
-import { useState, createContext, useContext } from 'react'
-
-const FocusContext = createContext();
-
-export const useIsFocused = () => useContext(FocusContext);
 
 const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, onKeyDown, onClick, placeholder="", isRequired = true }) => {
-  const [isFocused, setIsFocused] = useState(false);
 
   const renderRequiredAstrisk = () => {
     if (isRequired) {
@@ -14,14 +8,6 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
     }
   }
 
-  const handleFocus = () => {
-    setIsFocused(true);
-    onFocus?.();
-  }
-  const handleBlur = () => {
-    setIsFocused(false);
-    onBlur?.();
-  }
   const handleKeyDown = (e) => {
     if (onKeyDown) {
       onKeyDown(e);
@@ -29,8 +15,7 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
   }
 
   function getClassName() {
-    let ret = "input-box ";
-    if (isFocused) ret += " input-focus";
+    let ret = "input-box";
     if (className) ret += ` ${className}`;
     return ret;
   }
@@ -38,23 +23,19 @@ const InputBase = ({ id, className, children, caption, style, onFocus, onBlur, o
   const fieldID = id + "-field";
 
   return (
-    <FocusContext.Provider value={isFocused}>
-      <div id={id} className="input-container" style={style}>
-        <label className="input-caption color-green" htmlFor={fieldID}>{caption}{renderRequiredAstrisk()}</label>
-        <div
-          id={fieldID}
-          className={getClassName()}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
-          onClick={onClick}
-          tabIndex={0}
-        >
-          {placeholder && <span className="input-font input-placeholder">{placeholder}</span>}
-          {children}
-        </div>
+    <div id={id} className="input-container" style={style}>
+      <label className="input-caption color-green" htmlFor={fieldID}>{caption}{renderRequiredAstrisk()}</label>
+      <div
+        id={fieldID}
+        className={getClassName()}
+        onKeyDown={handleKeyDown}
+        onClick={onClick}
+        tabIndex={0}
+      >
+        {placeholder && <span className="input-font input-placeholder">{placeholder}</span>}
+        {children}
       </div>
-    </FocusContext.Provider>
+    </div>
   )
 }
 

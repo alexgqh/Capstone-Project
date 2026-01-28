@@ -1,4 +1,4 @@
-import InputBase, { useIsFocused } from "./inputBase"
+import InputBase from "./inputBase"
 import ChevronDownReg from '../assets/chevron-down-reg.svg'
 import ChevronDownFaded from '../assets/chevron-down-faded.svg'
 import ChevronUpReg from '../assets/chevron-up-reg.svg'
@@ -9,7 +9,6 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
   const [value, setValue] = useState(def);
   const [decEnabled, setDecEnabled] = useState(def > min);
   const [incEnabled, setIncEnabled] = useState(def < max);
-  const isFocused = useIsFocused();
 
   const inputRef = useRef();
   const inputTimeoutIDRef = useRef();
@@ -63,7 +62,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
         if (!inputRef.current) return false;
         return document.activeElement === inputRef.current;
       }
-      if (isFocused || isInputFocused()) inputRef.current?.select();
+      if (isInputFocused()) inputRef.current?.select();
       inputTimeoutIDRef.current = null;
     }
 

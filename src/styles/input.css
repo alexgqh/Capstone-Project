@@ -28,7 +28,7 @@ input[type="number"] {
   user-select: none;
 }
 
-.input-focus {
+.input-box:focus-within {
   outline: 2px solid var(--color-secondary-1);
 }
 
