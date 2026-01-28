@@ -5,6 +5,7 @@ input[type="number"] {
 .input-caption {
   padding-left: 8px;
   margin-bottom: 3px;
+  display: block;
 }
 
 .input-box {
@@ -52,11 +53,6 @@ input[type="number"] {
 .number-input {
   text-align: center;
   border-radius: 4px;
-}
-.number-input:focus {
-  background-color: var(--color-text-highlight);
-  color: white;
-  /* color: var(--color-highlight-1); */
 }
 .number-input::selection {
   background-color: transparent;
