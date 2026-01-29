@@ -9,10 +9,12 @@ export const defaultState = {
 //Constants
 export const MINGUESTS = 1;
 export const MAXGUESTS = 30;
+export const SEATINGOPTIONS = ["Indoor", "Outdoor"];
 export const MAXRESERVATIONTHRESH = 90; //Number of days out a reservation can be booked
-export const NOW = new Date()
-export const MINDATE = new Date(NOW.getFullYear(), NOW.getMonth(), NOW.getDate())
-export const MAXDATE = new Date(MINDATE.getFullYear(), MINDATE.getMonth(), MINDATE.getDate() + MAXRESERVATIONTHRESH)
+export const NOW = new Date();
+export const MINDATE = new Date(NOW.getFullYear(), NOW.getMonth(), NOW.getDate());
+export const MAXDATE = new Date(MINDATE.getFullYear(), MINDATE.getMonth(), MINDATE.getDate() + MAXRESERVATIONTHRESH);
+export const OCCASIONOPTIONS = ["Birthday","Engagement","Anniversary"];
 
 //Helper functions
 const isValidDate = (date) => (date instanceof Date && !isNaN(date));
@@ -39,10 +41,10 @@ export function reducer(state, action) {
     case "incGuests": return { ...state, guests: Math.min(state.guests + 1, MAXGUESTS) }
     case "decGuests": return { ...state, guests: Math.max(state.guests - 1, MINGUESTS) }
     case "setGuests": return { ...state, guests: clampInt(action.value, MINGUESTS, MAXGUESTS) }
-    case "cycleSeating": return { ...state, seating: (state.seating === 0) ? 1 : 0 }
-    case "setSeating": return { ...state, seating: clampInt(action.value, 0, 1) }
+    case "cycleSeating": return { ...state, seating: (state.seating + 1 > SEATINGOPTIONS.length - 1) ? 0 : state.seating + 1 }
+    case "setSeating": return { ...state, seating: clampInt(action.value, 0, SEATINGOPTIONS.length - 1) }
     case "setDate": return { ...state, date: isValidDate(action.value) ? clampDate(action.value) : new Date() }
     case "setTime": return { ...state, time: isValidTime(action.value) ? action.value : "5:00" }
-    case "setOccasion": return { ...state, occasion: clampInt(action.value, 0, 2) }
+    case "setOccasion": return { ...state, occasion: clampInt(action.value, 0, OCCASIONOPTIONS.length - 1) }
   }
 }

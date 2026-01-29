@@ -5,9 +5,8 @@ import ChevronUpReg from '../assets/chevron-up-reg.svg'
 import ChevronUpFaded from '../assets/chevron-up-faded.svg'
 import { useRef } from "react"
 import { useReserveState, useReserveDispatch } from "./context/reserveContext"
-import { MINGUESTS, MAXGUESTS } from "./reducer/reserveReducer"
 
-const NumberInput = ({ id, caption, isRequired = true }) => {
+const NumberInput = ({ id, caption, max, min, isRequired = true }) => {
   const value = useReserveState().guests;
   const dispatch = useReserveDispatch();
 
@@ -54,8 +53,8 @@ const NumberInput = ({ id, caption, isRequired = true }) => {
     inputTimeoutIDRef.current = setTimeout(timeoutFunction, timeout);
   }
 
-  const decEnabled = (value > MINGUESTS);
-  const incEnabled = (value < MAXGUESTS);
+  const decEnabled = (value > min);
+  const incEnabled = (value < max);
 
   return (
     <InputBase id={id} caption={caption} isRequired={isRequired} parentStyle={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus} role="spinbutton">
@@ -71,7 +70,7 @@ const NumberInput = ({ id, caption, isRequired = true }) => {
           <input
             className="number-input input-font"
             type="number"
-            value={value} min={MINGUESTS} max={MAXGUESTS}
+            value={value} min={min} max={max}
             onChange={handleValueChange}
             onClick={selectInputText}
             onKeyUp={handleKeyUp}
