@@ -1,25 +1,24 @@
 import InputBase from "./inputBase"
 import RadioButton from "./radioButton"
-import { useState } from "react"
+import { useReserveState, useReserveDispatch } from "./context/reserveContext"
 
 const RadioInput = ({ id, caption, isRequired, options }) => {
-  const [selected, setSelected] = useState(0);
+  const selected = useReserveState().seating;
+  const dispatch = useReserveDispatch();
 
   const handleKeyDown = (e) => {
-    const min = 0;
-    const max = options.length - 1;
     const incKeys = ["ArrowRight", "ArrowUp"];
     const decKeys = ["ArrowLeft", "ArrowDown"];
     const cycleKeys = [" "];
 
     if (incKeys.includes(e.key)) {
-      setSelected(prev => Math.min(prev + 1, max));
+      dispatch({ type: "setSeating", value: selected + 1 })
     }
     else if (decKeys.includes(e.key)) {
-      setSelected(prev => Math.max(prev - 1, min));
+      dispatch({ type: "setSeating", value: selected - 1 })
     }
     else if (cycleKeys.includes(e.key)) {
-      setSelected(prev => prev < max ? prev + 1 : min);
+      dispatch({ type: "cycleSeating" })
     }
   }
 
@@ -27,7 +26,8 @@ const RadioInput = ({ id, caption, isRequired, options }) => {
     <InputBase id={id} caption={caption} isRequired={isRequired} onKeyDown={handleKeyDown}>
       <span className="radio-layout" role="radiogroup" tabIndex={-1}>
         {options.map((option, i) => {
-          return <RadioButton toggledOn={i === selected} onClick={() => setSelected(i)}>{option}</RadioButton>
+          const handleClick = () => dispatch({ type: "setSeating", value: i })
+          return <RadioButton toggledOn={i === selected} onClick={handleClick} key={"seatingOption"+i}>{option}</RadioButton>
         })}
       </span>
     </InputBase>

@@ -3,6 +3,8 @@ import IconArrowLeft from '../assets/icon-arrow-left.svg';
 import IconArrowRight from '../assets/icon-arrow-right.svg';
 import IconArrowLeftDisabled from '../assets/icon-arrow-left-disabled.svg';
 import IconArrowRightDisabled from '../assets/icon-arrow-right-disabled.svg';
+import { useReserveState, useReserveDispatch } from './context/reserveContext';
+import { NOW, MINDATE, MAXDATE } from './reducer/reserveReducer';
 
 function getDaysInMonth(date) {
   //getMonth + 1 goes to the next month, and passing 0 as the date goes to the previous day (1 would be 1st of month, 2 is 2nd, so 0 is day before 1st of month)
@@ -24,11 +26,10 @@ function isDateWithinRange(date, start, end) {
   return (date >= start && date <= end);
 }
 
-const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingThresholdDays, ref }) => {
-  const todaysDate = new Date();
-  const endDate = new Date(todaysDate);
-  endDate.setDate(endDate.getDate() + bookingThresholdDays);
-  const [viewingMonth, setViewingMonth] = useState(new Date(dateSelected ? dateSelected : todaysDate));
+const CalendarDropdown = ({ setExpanded, ref }) => {
+  const dateSelected = useReserveState().date;
+  const dispatch = useReserveDispatch();
+  const [viewingMonth, setViewingMonth] = useState(new Date(dateSelected ? dateSelected : NOW));
 
   function decMonth() {
     setViewingMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1));
@@ -72,13 +73,14 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
     }
 
     //Start first row from Sunday, even if it was the previous month
-    date.setDate(date.getDate() - date.getDay());
+    date.setDate(1 - date.getDay());
 
     //Loop by row (1st row to 4th, 5th or 6th)
     for (let week = 1; week <= totalWeeks; week++) {
 
       //Loop by day of week -- Sunday through Saturday
       for (let day = 1; day <= 7; day++) {
+
         //Get day of month as a number (1-31)
         const dayOfMonth = date.getDate();
 
@@ -88,8 +90,8 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
         //Render button based on this information
         {
           const thisDate = new Date(date);
-          const isEnabled = isDateWithinRange(thisDate, todaysDate, endDate);
-          const isToday = datesMatch(date, todaysDate);
+          const isEnabled = isDateWithinRange(thisDate, NOW, MAXDATE);
+          const isToday = datesMatch(date, NOW);
           const isSelected = datesMatch(date, dateSelected);
           let style = {};
           let title = "";
@@ -119,7 +121,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
 
             handleClick = (e) => {
               e.preventDefault();
-              setDateSelected(thisDate);
+              dispatch({ type: "setDate", value: thisDate });
               setExpanded(false);
             }
           } else {
@@ -152,11 +154,8 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
     return days;
   }
 
-  const isCurrentMonth = todaysDate.getMonth() === viewingMonth.getMonth();
-  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
-
   function renderArrow(isLeft) {
-    const enabled = isLeft ? (!isCurrentMonth) : (viewingMonth.getMonth() !== endDate.getMonth());
+    const enabled = isLeft ? (!(viewingMonth.getMonth() <= MINDATE.getMonth())) : (!(viewingMonth.getMonth() >= MAXDATE.getMonth()));
     const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
     const src = isLeft ? (enabled ? IconArrowLeft : IconArrowLeftDisabled) : (enabled ? IconArrowRight : IconArrowRightDisabled);
     const alt = isLeft ? "Left arrow" : "Right arrow";
@@ -174,6 +173,9 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
     );
   }
 
+  const isCurrentMonth = (NOW.getMonth() === viewingMonth.getMonth());
+  const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
+
   return (
     <div className="input-dropdown input-calendar-dropdown" ref={ref} role="dialog">
       <div className={`calendar-dropdown-title`}>
@@ -182,7 +184,7 @@ const CalendarDropdown = ({ dateSelected, setDateSelected, setExpanded, bookingT
         {renderArrow(false)}
       </div>
       <div className="calendar-dropdown-grid" role="grid">
-        {["S","M","T","W","Th","F","Sa"].map(label => <span className="calendar-day-label">{label}</span>)}
+        {["S","M","T","W","Th","F","Sa"].map(label => <span className="calendar-day-label" key={"day-label-"+label}>{label}</span>)}
         {renderDays()}
       </div>
     </div>

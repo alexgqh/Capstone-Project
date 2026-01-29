@@ -1,4 +1,5 @@
 import "../styles/reserve.css"
+import ReserveProvider from "./context/reserveContext"
 import ReserveBanner from './reserveBanner'
 import NumberInput from './numberInput'
 import RadioInput from './radioInput'
@@ -15,7 +16,7 @@ const Reserve = () => {
   const Page1 = () => {
     return (
       <>
-        <NumberInput id="input-nr-guests" caption="Number of guests" min={1} max={30} def={1} />
+        <NumberInput id="input-nr-guests" caption="Number of guests" />
         <RadioInput id="input-seating" caption="Seating" options={["Indoor","Outdoor"]} />
         <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." />
         <TimeInput id="input-time" placeholder="Select a time..." />
@@ -25,7 +26,7 @@ const Reserve = () => {
   }
 
   return (
-    <>
+    <ReserveProvider>
       <ReserveBanner />
       <form id="reserve-form" className="page-padding">
         {
@@ -38,10 +39,8 @@ const Reserve = () => {
         <Button id="reserve1-cancel" onClick={cancelReservation}>Cancel</Button>
         <Button id="reserve1-continue" isCTA={true} onClick={setPageReserve2}>Continue</Button>
       </form>
-    </>
+    </ReserveProvider>
   )
 }
 
 export default Reserve;
-
-//next thing I want to do is to restore form focus to normal state... We don't need to keep track of focus manually.

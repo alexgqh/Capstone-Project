@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import InputBase from "./inputBase"
 import IconClock from "../assets/icon-clock.svg"
 import Placeholder from "./placeholder";
+import { useReserveState, useReserveDispatch } from "./context/reserveContext";
 
 function getTimeFromIndex(index) {
   switch(index) {
@@ -30,7 +31,8 @@ function getTimeFromIndex(index) {
 
 const TimeInput = ({ id, placeholder }) => {
   const [expanded, setExpanded] = useState(false);
-  const [timeSelected, setTimeSelected] = useState(null);
+  const timeSelected = useReserveState().time;
+  const dispatch = useReserveDispatch();
   const dropdownRef = useRef();
 
   function renderTimeDropdownItems() {
@@ -38,13 +40,13 @@ const TimeInput = ({ id, placeholder }) => {
     let ret = []
     for (let i=1; i<=4; i++) {
       for (let j=1; j<=5; j++) {
-        const thisValue = idx;
+        const thisIdx = idx;
         const handleClick = (e) => {
           e.preventDefault();
-          setTimeSelected(thisValue);
+          dispatch({ type: "setTime", value: getTimeFromIndex(thisIdx) })
           setExpanded(false);
         }
-        const isSelected = (idx === timeSelected)
+        const isSelected = (getTimeFromIndex(idx) === timeSelected)
         let className = "input-item time-dropdown-item time-dropdown-item-active"
         if (isSelected) className += " time-dropdown-item-active-active"
         const time = getTimeFromIndex(idx++)
@@ -72,7 +74,7 @@ const TimeInput = ({ id, placeholder }) => {
     if (timeSelected === null) {
       return <Placeholder>{placeholder}</Placeholder>
     } else {
-      return <p className="input-font">{getTimeFromIndex(timeSelected)+" PM (CST)"}</p>
+      return <p className="input-font">{timeSelected+" PM (CST)"}</p>
     }
   }
 

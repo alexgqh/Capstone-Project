@@ -3,48 +3,33 @@ import ChevronDownReg from '../assets/chevron-down-reg.svg'
 import ChevronDownFaded from '../assets/chevron-down-faded.svg'
 import ChevronUpReg from '../assets/chevron-up-reg.svg'
 import ChevronUpFaded from '../assets/chevron-up-faded.svg'
-import { useState, useEffect, useRef } from "react"
+import { useRef } from "react"
+import { useReserveState, useReserveDispatch } from "./context/reserveContext"
+import { MINGUESTS, MAXGUESTS } from "./reducer/reserveReducer"
 
-const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
-  const [value, setValue] = useState(def);
-  const [decEnabled, setDecEnabled] = useState(def > min);
-  const [incEnabled, setIncEnabled] = useState(def < max);
+const NumberInput = ({ id, caption, isRequired = true }) => {
+  const value = useReserveState().guests;
+  const dispatch = useReserveDispatch();
 
   const inputRef = useRef();
   const inputTimeoutIDRef = useRef();
-
-  useEffect(() => {
-    setDecEnabled(value > min);
-    setIncEnabled(value < max);
-  }, [value]);
-
-  const decVal = () => setValue(prev => prev > min ? parseInt(prev) - 1 : min);
-  const incVal = () => setValue(prev => prev < max ? parseInt(prev) + 1 : max);
 
   const selectInputText = () => {
     setTimeout(() => inputRef.current?.select(), 1);
   }
   const handleDecrement = (e) => {
     e.preventDefault();
-    decVal();
+    dispatch({ type: "decGuests" });
     selectInputText();
   }
   const handleIncrement = (e) => {
     e.preventDefault();
-    incVal();
+    dispatch({ type: "incGuests" });
     selectInputText();
   }
   const handleValueChange = (e) => {
-    const val = e.target.value;
-    if (val <= max && val >= min) {
-      setValue(e.target.value);
-    }
-    else if (val > max) {
-      setValue(max);
-    }
-    else if (val < min) {
-      setValue(min);
-    }
+    const value = e.target.value;
+    dispatch({ type: "setGuests", value });
   }
   const handleFocus = () => {
     inputRef.current?.select();
@@ -69,6 +54,9 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     inputTimeoutIDRef.current = setTimeout(timeoutFunction, timeout);
   }
 
+  const decEnabled = (value > MINGUESTS);
+  const incEnabled = (value < MAXGUESTS);
+
   return (
     <InputBase id={id} caption={caption} isRequired={isRequired} parentStyle={{alignSelf:"center", minHeight:"77px"}} onFocus={handleFocus} role="spinbutton">
       <div className="number-input-layout">
@@ -83,7 +71,7 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
           <input
             className="number-input input-font"
             type="number"
-            value={value} min={min} max={max}
+            value={value} min={MINGUESTS} max={MAXGUESTS}
             onChange={handleValueChange}
             onClick={selectInputText}
             onKeyUp={handleKeyUp}
@@ -102,6 +90,5 @@ const NumberInput = ({ id, caption, min, max, def, isRequired = true }) => {
     </InputBase>
   );
 }
-
 
 export default NumberInput;

@@ -2,10 +2,12 @@ import { useState, useRef } from "react"
 import InputBase from "./inputBase"
 import Placeholder from "./placeholder"
 import IconChevron from "../assets/chevron-down-reg.svg"
+import { useReserveState, useReserveDispatch } from "./context/reserveContext"
 
 const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
   const [expanded, setExpanded] = useState(false)
-  const [selected, setSelected] = useState(null)
+  const idxSelected = useReserveState().occasion
+  const dispatch = useReserveDispatch()
   const dropdownRef = useRef()
 
   function renderDropdown() {
@@ -15,14 +17,14 @@ const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
         if (i < options.length - 1) {
           className += " line-beneath"
         }
-        if (i === selected) {
+        if (i === idxSelected) {
           className += " combobox-dropdown-item-active"
         }
         const handleClick = () => {
-          setSelected(i)
+          dispatch({ type: "setOccasion", value: i })
           setExpanded(false)
         }
-        return <div className={className} onClick={handleClick} role="option">{option}</div>
+        return <div className={className} onClick={handleClick} role="option" key={"dropdown-option-"+i}>{option}</div>
       })
     }
     return (expanded &&
@@ -32,21 +34,21 @@ const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
     )
   }
 
+  function renderPlaceholderOrSelected() {
+    if (idxSelected === null) {
+      return <Placeholder>{placeholder}</Placeholder>
+    } else {
+      return <p className="input-font">{options[idxSelected]}</p>
+    }
+  }
+
   const handleClick = (e) => {
     if (dropdownRef.current?.contains(e.target)) return
-    setExpanded(!expanded);
+    setExpanded(!expanded)
   }
 
   let style = {}
   if (expanded) style.zIndex = "1000"
-
-  function renderPlaceholderOrSelected() {
-    if (selected === null) {
-      return <Placeholder>{placeholder}</Placeholder>
-    } else {
-      return <p className="input-font">{options[selected]}</p>
-    }
-  }
 
   return (
     <>

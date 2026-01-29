@@ -3,16 +3,19 @@ import InputBase from './inputBase';
 import CalendarDropdown from './calendarDropdown';
 import Placeholder from './placeholder';
 import { useState, useRef } from 'react';
+import { useReserveState, useReserveDispatch } from './context/reserveContext';
+import { NOW } from './reducer/reserveReducer';
 
 const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) => {
   const [expanded, setExpanded] = useState(false);
-  const [dateSelected, setDateSelected] = useState();
+  const dateSelected = useReserveState().date;
+  const dispatch = useReserveDispatch();
 
   const dropdownRef = useRef();
 
   const handleClick = (e) => {
     if (!dropdownRef.current) {
-      if (!dateSelected) setDateSelected(new Date());
+      if (!dateSelected) dispatch({ type: "setDate", value: NOW })
       setExpanded(prev => !prev);
     } else {
       if (!dropdownRef.current.contains(e.target)) {
@@ -46,7 +49,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
         {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
-      {expanded && <CalendarDropdown dateSelected={dateSelected} setDateSelected={setDateSelected} setExpanded={setExpanded} bookingThresholdDays={bookingThresholdDays} ref={dropdownRef}/>}
+      {expanded && <CalendarDropdown setExpanded={setExpanded} ref={dropdownRef}/>}
     </InputBase>
   </>);
 }
