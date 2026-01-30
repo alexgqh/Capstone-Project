@@ -8,7 +8,7 @@ import TimeInput from "./timeInput"
 import ComboboxInput from "./comboboxInput"
 import Button from './button'
 import { usePage } from "../global/pageContext"
-import { MAXGUESTS, MINGUESTS, SEATINGOPTIONS, OCCASIONOPTIONS } from "./reducer/reserveReducer"
+import { MAXGUESTS, MINGUESTS, SEATINGOPTIONS, MINDATE, MAXDATE, OCCASIONOPTIONS } from "./reducer/reserveReducer"
 
 const Reserve = () => {
 
@@ -17,9 +17,9 @@ const Reserve = () => {
   const Page1 = () => {
     return (
       <>
-        <NumberInput id="input-nr-guests" caption="Number of guests" max={MAXGUESTS} min={MINGUESTS} />
+        <NumberInput id="input-nr-guests" caption="Number of guests" min={MINGUESTS} max={MAXGUESTS} />
         <RadioInput id="input-seating" caption="Seating" options={SEATINGOPTIONS} />
-        <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." />
+        <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." minDate={MINDATE} maxDate={MAXDATE} />
         <TimeInput id="input-time" placeholder="Select a time..." />
         <ComboboxInput id="input-occasion" caption="Occasion" isRequired={false} placeholder="What's the occasion? (Optional)" options={OCCASIONOPTIONS} />
       </>

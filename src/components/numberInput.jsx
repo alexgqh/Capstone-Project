@@ -6,7 +6,7 @@ import ChevronUpFaded from '../assets/chevron-up-faded.svg'
 import { useRef } from "react"
 import { useReserveState, useReserveDispatch } from "./context/reserveContext"
 
-const NumberInput = ({ id, caption, max, min, isRequired = true }) => {
+const NumberInput = ({ id, caption, min, max, isRequired = true }) => {
   const value = useReserveState().guests;
   const dispatch = useReserveDispatch();
 

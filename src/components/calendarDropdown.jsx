@@ -4,7 +4,6 @@ import IconArrowRight from '../assets/icon-arrow-right.svg';
 import IconArrowLeftDisabled from '../assets/icon-arrow-left-disabled.svg';
 import IconArrowRightDisabled from '../assets/icon-arrow-right-disabled.svg';
 import { useReserveState, useReserveDispatch } from './context/reserveContext';
-import { NOW, MINDATE, MAXDATE } from './reducer/reserveReducer';
 
 function getDaysInMonth(date) {
   //getMonth + 1 goes to the next month, and passing 0 as the date goes to the previous day (1 would be 1st of month, 2 is 2nd, so 0 is day before 1st of month)
@@ -26,10 +25,11 @@ function isDateWithinRange(date, start, end) {
   return (date >= start && date <= end);
 }
 
-const CalendarDropdown = ({ setExpanded, ref }) => {
+const CalendarDropdown = ({ setExpanded, minDate, maxDate, ref }) => {
+  const currentDate = new Date();
   const dateSelected = useReserveState().date;
   const dispatch = useReserveDispatch();
-  const [viewingMonth, setViewingMonth] = useState(new Date(dateSelected ? dateSelected : NOW));
+  const [viewingMonth, setViewingMonth] = useState(new Date(dateSelected ? dateSelected : currentDate));
 
   function decMonth() {
     setViewingMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1));
@@ -90,8 +90,8 @@ const CalendarDropdown = ({ setExpanded, ref }) => {
         //Render button based on this information
         {
           const thisDate = new Date(date);
-          const isEnabled = isDateWithinRange(thisDate, NOW, MAXDATE);
-          const isToday = datesMatch(date, NOW);
+          const isEnabled = maxDate ? isDateWithinRange(thisDate, currentDate, maxDate) : true;
+          const isToday = datesMatch(date, currentDate);
           const isSelected = datesMatch(date, dateSelected);
           let style = {};
           let title = "";
@@ -155,7 +155,7 @@ const CalendarDropdown = ({ setExpanded, ref }) => {
   }
 
   function renderArrow(isLeft) {
-    const enabled = isLeft ? (!(viewingMonth.getMonth() <= MINDATE.getMonth())) : (!(viewingMonth.getMonth() >= MAXDATE.getMonth()));
+    const enabled = isLeft ? (!(viewingMonth.getMonth() <= minDate?.getMonth())) : (!(viewingMonth.getMonth() >= maxDate?.getMonth()));
     const className = `calendar-month-arrow${enabled ? "" : " disable-pointer"}`;
     const src = isLeft ? (enabled ? IconArrowLeft : IconArrowLeftDisabled) : (enabled ? IconArrowRight : IconArrowRightDisabled);
     const alt = isLeft ? "Left arrow" : "Right arrow";
@@ -173,7 +173,7 @@ const CalendarDropdown = ({ setExpanded, ref }) => {
     );
   }
 
-  const isCurrentMonth = (NOW.getMonth() === viewingMonth.getMonth());
+  const isCurrentMonth = (currentDate.getMonth() === viewingMonth.getMonth());
   const monthSelectedLong = viewingMonth.toLocaleString('default', { month: "long", year: "numeric" });
 
   return (

@@ -6,7 +6,7 @@ import { useState, useRef } from 'react';
 import { useReserveState, useReserveDispatch } from './context/reserveContext';
 import { NOW } from './reducer/reserveReducer';
 
-const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) => {
+const CalendarInput = ({ id, caption, placeholder, minDate, maxDate }) => {
   const [expanded, setExpanded] = useState(false);
   const dateSelected = useReserveState().date;
   const dispatch = useReserveDispatch();
@@ -49,7 +49,7 @@ const CalendarInput = ({ id, caption, placeholder, bookingThresholdDays = 90 }) 
         {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
-      {expanded && <CalendarDropdown setExpanded={setExpanded} ref={dropdownRef}/>}
+      {expanded && <CalendarDropdown setExpanded={setExpanded} ref={dropdownRef} minDate={minDate} maxDate={maxDate} />}
     </InputBase>
   </>);
 }
