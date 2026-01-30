@@ -1,4 +1,4 @@
-import "../styles/reserve.css"
+import "../styles/reserveBanner.css"
 import { usePage } from "../global/pageContext";
 
 const ReserveBanner = () => {

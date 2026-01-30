@@ -1,0 +1,30 @@
+.reserve1-row-layout {
+  grid-template-rows: repeat(3, auto) var(--padding-block-md) 77px;
+}
+
+#input-nr-guests {
+  grid-column: 1;
+}
+
+#input-seating {
+  grid-column: 2 / span 2;
+}
+
+#input-date {
+  grid-row: 2;
+  grid-column: 1 / span 3;
+}
+
+#input-time {
+  grid-row: 2;
+  grid-column: 4 / span 2;
+}
+
+#input-occasion {
+  grid-row: 3;
+  grid-column: 1 / span 5;
+}
+
+.form-button-reg, .form-button-cta {
+  grid-row: 5;
+}
