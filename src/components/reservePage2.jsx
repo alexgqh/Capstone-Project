@@ -2,7 +2,7 @@ import '../styles/reserve.css'
 import '../styles/reservePage2.css'
 
 import Button from "./button"
-import { usePage } from "../global/pageContext"
+import { usePage } from "./global/PageContext"
 
 const ReservePage2 = () => {
   const { setPageReserve1, setPageConfirmed } = usePage();

@@ -3,7 +3,7 @@ import ReserveBanner from './reserveBanner'
 import ReservePage1 from "./reservePage1"
 import ReservePage2 from "./reservePage2"
 import ReserveConfirmation from "./reserveConfirmation"
-import { usePage } from "../global/pageContext"
+import { usePage } from "./global/PageContext"
 
 const Reserve = () => {
 

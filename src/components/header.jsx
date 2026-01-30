@@ -1,5 +1,5 @@
 import LogoHeader from '../assets/logo-header.svg';
-import { usePage } from '../global/pageContext';
+import { usePage } from './global/pageContext';
 
 const Header = ({ ref }) => {
   const { page, cancelReservation, scrollToTop, setPageReserve } = usePage();

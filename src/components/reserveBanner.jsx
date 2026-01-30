@@ -1,5 +1,5 @@
 import "../styles/reserveBanner.css"
-import { usePage } from "../global/pageContext";
+import { usePage } from "./global/pageContext";
 
 const ReserveBanner = () => {
   const { page, setPageReserve1, setPageReserve2, scrollToTop } = usePage();

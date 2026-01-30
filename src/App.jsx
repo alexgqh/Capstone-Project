@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { PageProvider } from './global/pageContext';
+import { PageProvider } from './components/global/PageContext';
 
 import Header from './components/header';
 import Home from './components/home';

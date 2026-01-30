@@ -1,5 +1,5 @@
 import LogoFooter from '../assets/logo-footer.svg';
-import { usePage } from '../global/pageContext';
+import { usePage } from './global/pageContext';
 
 const Footer = () => {
   const { setPageReserve, scrollToTop } = usePage();

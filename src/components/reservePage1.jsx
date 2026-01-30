@@ -2,7 +2,7 @@ import '../styles/reserve.css'
 import '../styles/reservePage1.css'
 
 import { MAXGUESTS, MINGUESTS, SEATINGOPTIONS, MINDATE, MAXDATE, OCCASIONOPTIONS } from "./reducer/reserveReducer"
-import { usePage } from "../global/pageContext"
+import { usePage } from "./global/pageContext"
 import NumberInput from './numberInput'
 import RadioInput from './radioInput'
 import CalendarInput from "./calendarInput"
