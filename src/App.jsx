@@ -38,18 +38,21 @@ function App() {
   const cancelReservation = () => {
     setIsCanceling(true);
   }
+  const setPageConfirmed = () => {
+    setPage("confirmed");
+  }
 
   useEffect(() => {
     document.querySelector("body").classList = isCanceling ? 'no-scrollbar' : '';
   }, [isCanceling])
 
   return (
-    <PageProvider value={{page, setPageHome, setPageReserve1, setPageReserve2, setPageReserve, cancelReservation, scrollToTop}}>
-      <Header ref={headerRef} />
+    <PageProvider value={{page, setPageHome, setPageReserve1, setPageReserve2, setPageReserve, setPageConfirmed, cancelReservation, scrollToTop}}>
+      {page !== "confirmed" && <Header ref={headerRef} />}
       {
-        page.startsWith('reserve') ?
-          <Reserve /> :
-          <Home />
+        page === "home" ?
+          <Home /> :
+          <Reserve />
       }
       {isCanceling ?
         <Confirm
