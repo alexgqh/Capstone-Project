@@ -32,7 +32,7 @@ input[type="number"] {
 .input-box:focus-within {
   outline: 2px solid var(--color-secondary-1);
 }
-
+/*--------------------------------------------------*/
 .number-input-layout {
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@ input[type="number"] {
 .disable-pointer {
   cursor: default !important;
 }
-
+/*--------------------------------------------------*/
 .radio-layout {
   display: flex;
   justify-content: space-around;
@@ -86,7 +86,7 @@ input[type="number"] {
   border-radius: 50%;
   background-color: var(--color-highlight-2);
 }
-
+/*--------------------------------------------------*/
 .input-flex {
   cursor: inherit;
   display: flex;

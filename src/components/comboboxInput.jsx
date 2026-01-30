@@ -54,7 +54,7 @@ const ComboboxInput = ({ id, caption, isRequired, placeholder, options }) => {
     <>
       {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)} />}
       <InputBase id={id} className="input-dropdown-parent" caption={caption} isRequired={isRequired} onClick={handleClick} role="combobox" style={style}>
-        <div className="input-flex">
+        <div className="input-flex input-combobox">
           {renderPlaceholderOrSelected()}
           <img src={IconChevron} alt="Downward-pointing chevron" />
         </div>
