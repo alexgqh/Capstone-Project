@@ -39,7 +39,7 @@ function App() {
     setIsCanceling(true);
   }
   const setPageConfirmed = () => {
-    setPage("confirmed");
+    setPage("reservationConfirmed");
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <PageProvider value={{page, setPageHome, setPageReserve1, setPageReserve2, setPageReserve, setPageConfirmed, cancelReservation, scrollToTop}}>
-      {page !== "confirmed" && <Header ref={headerRef} />}
+      {page !== "reservationConfirmed" && <Header ref={headerRef} />}
       {
         page === "home" ?
           <Home /> :
