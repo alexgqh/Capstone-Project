@@ -1,0 +1,9 @@
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.input-text input {
+  width: 100%;
+}

@@ -260,3 +260,7 @@ input[type="number"] {
 .line-beneath {
   border-bottom: 2px solid var(--color-bg);
 }
+/*--------------------------------------------------*/
+.cursor-text {
+  cursor: text;
+}
