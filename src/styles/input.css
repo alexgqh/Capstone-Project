@@ -20,12 +20,12 @@ input[type="number"] {
 .input-font {
   font-family: 'Markazi', sans-serif;
   font-weight: normal;
-  font-size: 48px;
+  font-size: 38px;
   color: var(--color-highlight-2);
 }
 
 .input-placeholder {
-  color: hsl(from var(--color-highlight-2) h s l / 0.3);
+  color: var(--color-placeholder);
   user-select: none;
 }
 
@@ -261,6 +261,9 @@ input[type="number"] {
   border-bottom: 2px solid var(--color-bg);
 }
 /*--------------------------------------------------*/
-.cursor-text {
-  cursor: text;
+.input-text input {
+  width: 100%;
+}
+.input-text input::placeholder {
+  color: var(--color-placeholder);
 }

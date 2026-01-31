@@ -1,6 +1,6 @@
 import '../styles/input.css'
 
-const InputBase = ({ id, className, children, caption, parentStyle, style, onKeyDown, onClick, role, isRequired = true }) => {
+const InputBase = ({ id, className, children, caption, parentStyle, style, onKeyDown, onClick, role, tabIndex=0, isRequired = true }) => {
 
   const renderRequiredAstrisk = () => {
     if (isRequired) {
@@ -30,7 +30,7 @@ const InputBase = ({ id, className, children, caption, parentStyle, style, onKey
         className={getClassName()}
         onKeyDown={handleKeyDown}
         onClick={onClick}
-        tabIndex={0}
+        tabIndex={tabIndex}
         role={role}
         style={style}
       >

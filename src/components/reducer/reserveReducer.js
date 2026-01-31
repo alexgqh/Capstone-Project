@@ -1,13 +1,15 @@
 export const defaultState = {
+  /*--page 1--*/
   guests: 1, //1 to 30
   seating: 0, //0 or 1
   date: null, //today's date to 90 days in the future
   time: null, //5pm-9:45pm in increments of 15 minutes
   occasion: null, //"Birthday", "Engagement", "Anniversary"
-  firstName: null, //0-30 characters
-  lastName: null, //0-30 characters
-  email: null, //0-50 characters
-  phoneNumber: null, //10 characters
+  /*--page 2--*/
+  firstName: null, //255 characters
+  lastName: null, //255 characters
+  email: null, //254 characters
+  phoneNumber: null, //15 characters
   additionalInfo: null, //200 characters
 }
 
@@ -21,18 +23,25 @@ export const MINDATE = new Date(NOW.getFullYear(), NOW.getMonth(), NOW.getDate()
 export const MAXDATE = new Date(MINDATE.getFullYear(), MINDATE.getMonth(), MINDATE.getDate() + MAXRESERVATIONTHRESH);
 export const OCCASIONOPTIONS = ["Birthday","Engagement","Anniversary"];
 export const textFieldLengths = {
-  firstName: 30,
-  lastName: 30,
-  email: 50,
-  phoneNumber: 10,
-  additionalInfo: 200,
+  firstName: 255,
+  lastName: 255,
+  email: 254,
+  phoneNumber: 15,
+  additionalInfo: 500,
 }
 
 //Helper functions
+const isValidInteger = (int) => Number.isValidInteger(int);
 const isValidDate = (date) => (date instanceof Date && !isNaN(date));
 const isValidTime = (time) => {
   const acceptableTimes = ["5:00","5:15","5:30","5:45","6:00","6:15","6:30","6:45","7:00","7:15","7:30","7:45","8:00","8:15","8:30","8:45","9:00","9:15","9:30","9:45"];
   return (acceptableTimes.includes(time));
+}
+const isValidEmail = (email) => {
+  return /^.+@.+$/.test(email);
+}
+const isValidPhoneNumber = (phoneNumber) => {
+  return /^\+?[0-9\s\-().]{7,15}$/.test(phoneNumber);
 }
 const clampInt = (i, min, max) => Math.min(max, Math.max(min, i));
 const clampDate = (d, min = MINDATE, max = MAXDATE) => {
@@ -45,6 +54,11 @@ const clampDate = (d, min = MINDATE, max = MAXDATE) => {
   if (_d < _min) return min;
   if (_d > _max) return max;
   return _d;
+}
+function isDateWithinRange(date, start, end) {
+  start = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  end = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  return (date >= start && date <= end);
 }
 
 //Reducer function
@@ -65,4 +79,71 @@ export function reducer(state, action) {
     }
     default: return state
   }
+}
+
+//Validator function
+export function validateInput(state) {
+  let result = { success: true, invalidValue: [], missingValue: [] };
+
+  //Validate guests
+  if (!isValidInteger(state.guests) || state.guests < MINGUESTS || state.guests > MAXGUESTS) {
+    result.success = false;
+    result.invalidValue.push("number of guests");
+  }
+
+  //Validate seating
+  if (!isValidInteger(state.seating) || state.seating < 0 || state.seating > SEATINGOPTIONS.length - 1) {
+    result.success = false;
+    result.invalidValue.push("indoor/outdoor seating");
+  }
+
+  //Validate date
+  if (state.date === null) {
+    result.success = false;
+    result.missingValue.push("reservation date");
+  } else if (!isValidDate(state.date) || !isDateWithinRange(state.date, MINDATE, MAXDATE)) {
+    result.success = false;
+    result.invalidValue.push("reservation date");
+  }
+
+  //Validate time
+  if (state.time === null) {
+    result.success = false;
+    result.missingValue.push("reservation time");
+  } else if (!isValidTime(state.time)) {
+    result.success = false;
+    result.invalidValue.push("reservation time");
+  }
+
+  //Validate first name
+  if (state.firstName === null) {
+    result.success = false;
+    result.missingValue.push("first name");
+  }
+
+  //Validate last name
+  if (state.lastName === null) {
+    result.success = false;
+    result.missingValue.push("last name");
+  }
+
+  //Validate email
+  if (state.email === null) {
+    result.success = false;
+    result.missingValue.push("email address");
+  } else if (!isValidEmail(state.email)) {
+    result.success = false;
+    result.invalidValue.push("email address");
+  }
+
+  //Validate telephone number
+  if (state.phoneNumber === null) {
+    result.success = false;
+    result.missingValue.push("phone number");
+  } else if (!isValidPhoneNumber(state.phoneNumber)) {
+    result.success = false;
+    result.invalidValue.push("phone number");
+  }
+
+  return result;
 }

@@ -1,32 +1,32 @@
 import '../styles/input.css'
 import InputBase from "./inputBase"
-import Placeholder from "./placeholder"
 import { useReserveState, useReserveDispatch } from "./context/reserveContext"
 import { textFieldLengths } from "./reducer/reserveReducer"
 
-const TextInput = ({ id, caption, required=true, placeholder, field }) => {
+const TextInput = ({ id, caption, required=true, type="text", placeholder, ref, field }) => {
   const value = useReserveState()[field];
   const dispatch = useReserveDispatch();
 
-  function renderValueOrPlaceholder() {
-    if (value !== null) {
-      const handleChange = (e) => dispatch({ type: "setTextField", field, value: e.target.value })
-      const raw = textFieldLengths[field]
-      const maxLength = Number.isInteger(raw) && raw >= 0 ? raw : 0
-      return <input type="text" className="input-font" onChange={handleChange} maxLength={maxLength} value={value} autoFocus={true} />
-    } else {
-      const handleClick = () => dispatch({ type: "setTextField", field, value: "" })
-      return (
-        <div className="cursor-text" onClick={handleClick}>
-          <Placeholder>{placeholder}</Placeholder>
-        </div>
-      )
-    }
+  function renderInput() {
+    const handleChange = (e) => dispatch({ type: "setTextField", field, value: e.target.value })
+    const raw = textFieldLengths[field]
+    const maxLength = Number.isInteger(raw) && raw >= 0 ? raw : 0
+    return <input
+      type={type}
+      className="input-font"
+      onChange={handleChange}
+      maxLength={maxLength}
+      value={value}
+      placeholder={placeholder}
+      required={required}
+      autoFocus={true}
+      ref={ref}
+    />
   }
 
   return (
-    <InputBase id={id} className="input-text" required={required} caption={caption} role={"text"}>
-      {renderValueOrPlaceholder()}
+    <InputBase id={id} className="input-text" required={required} caption={caption} role="text" tabIndex={-1}>
+      {renderInput()}
     </InputBase>
   );
 }

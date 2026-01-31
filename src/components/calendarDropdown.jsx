@@ -4,6 +4,7 @@ import IconArrowRight from '../assets/icon-arrow-right.svg';
 import IconArrowLeftDisabled from '../assets/icon-arrow-left-disabled.svg';
 import IconArrowRightDisabled from '../assets/icon-arrow-right-disabled.svg';
 import { useReserveState, useReserveDispatch } from './context/reserveContext';
+import { isDateWithinRange } from './reducer/reserveReducer';
 
 function getDaysInMonth(date) {
   //getMonth + 1 goes to the next month, and passing 0 as the date goes to the previous day (1 would be 1st of month, 2 is 2nd, so 0 is day before 1st of month)
@@ -17,12 +18,6 @@ function datesMatch(date1, date2) {
   if (date1.getMonth() !== date2.getMonth()) return false;
   if (date1.getDate() !== date2.getDate()) return false;
   return true;
-}
-
-function isDateWithinRange(date, start, end) {
-  start = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  end = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-  return (date >= start && date <= end);
 }
 
 const CalendarDropdown = ({ setExpanded, minDate, maxDate, ref }) => {
