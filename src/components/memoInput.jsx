@@ -20,7 +20,7 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
 
   const handleChange = (e) => dispatch({ type: "setTextField", field: "additionalInfo", value: e.target.value });
   return (
-    <InputBase id={id} className="memo-inner" caption={caption} isRequired={isRequired} tabIndex={-1}>
+    <InputBase id={id} className="memo-wrapper" caption={caption} isRequired={isRequired} tabIndex={-1}>
       {renderCharsRemaining()}
       <textarea className="memo-input input-font" placeholder={placeholder} rows={numLines} maxlength={maxChars} value={value} onChange={handleChange} />
     </InputBase>

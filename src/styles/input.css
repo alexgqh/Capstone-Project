@@ -268,7 +268,7 @@ input[type="number"] {
   color: var(--color-placeholder);
 }
 /*--------------------------------------------------*/
-.memo-inner {
+.memo-wrapper {
   height: 200px;
   position: relative;
 }
@@ -293,7 +293,7 @@ input[type="number"] {
   transition: opacity 150ms ease;
   font-variant-numeric: tabular-nums;
 }
-.memo-inner:focus-within .char-counter {
+.memo-wrapper:focus-within .char-counter {
   opacity: 1;
   pointer-events: auto;
 }
