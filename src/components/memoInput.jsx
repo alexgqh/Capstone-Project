@@ -26,3 +26,7 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
 }
 
 export default MemoInput;
+
+//change error icon
+//make remaining char text align left
+//create reservation confirmed page

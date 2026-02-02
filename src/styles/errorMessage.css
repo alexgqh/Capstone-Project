@@ -12,8 +12,7 @@
   animation-iteration-count: 2;
 }
 .error-icon {
-  padding-top: 5px;
-  width: 36px;
+  width: 24px;
 }
 .error-text {
   flex: 1;
