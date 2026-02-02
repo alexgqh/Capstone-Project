@@ -283,8 +283,12 @@ input[type="number"] {
   color: var(--color-placeholder);
 }
 .chars-remaining {
+  opacity: 0;
   position: absolute;
   bottom: 100%;
   right: 0%;
   padding-right: 8px;
+}
+.memo-inner:focus-within .chars-remaining {
+  opacity: 1;
 }
