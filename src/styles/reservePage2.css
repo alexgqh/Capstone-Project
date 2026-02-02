@@ -3,3 +3,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+#input-additional-info {
+  grid-column: 1 / 3;
+}

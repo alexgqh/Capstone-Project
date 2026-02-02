@@ -3,10 +3,11 @@ import '../styles/reservePage2.css'
 
 import Button from "./button"
 import TextInput from './textInput'
+import MemoInput from './memoInput'
 import ErrorMessage from './errorMessage'
 import { usePage } from "./global/PageContext"
 import { useState, useRef, useEffect } from 'react'
-import { validateInput } from './reducer/reserveReducer'
+import { textFieldLengths, validateInput } from './reducer/reserveReducer'
 import { useReserveState } from './context/reserveContext'
 
 const ReservePage2 = () => {
@@ -49,6 +50,7 @@ const ReservePage2 = () => {
         <TextInput id="input-name-last" caption="Last name" placeholder="Your last name" field="lastName" />
         <TextInput id="input-email" caption="Email" placeholder="Your email" field="email" type="email" />
         <TextInput id="input-tel" caption="Phone number" placeholder="Your phone number" field="phoneNumber" type="tel" />
+        <MemoInput id="input-additional-info" caption="Additional info" placeholder="Enter any additional information or special requests here (Optional)" numLines={4} maxChars={textFieldLengths.additionalInfo} />
       </div>
       <div className="five-col-layout padding-bottom-md">
         <Button className="form-button-reg" onClick={setPageReserve1}>Previous</Button>

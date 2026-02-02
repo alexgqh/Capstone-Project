@@ -267,3 +267,18 @@ input[type="number"] {
 .input-text input::placeholder {
   color: var(--color-placeholder);
 }
+/*--------------------------------------------------*/
+.memo-inner {
+  height: 200px;
+  align-items: flex-start;
+}
+.memo-input {
+  height: calc(100% - var(--padding-block-sm));
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+}
+.memo-input::placeholder {
+  color: var(--color-placeholder);
+}
