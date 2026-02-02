@@ -282,7 +282,7 @@ input[type="number"] {
 .memo-input::placeholder {
   color: var(--color-placeholder);
 }
-.chars-remaining {
+.char-counter {
   opacity: 0;
   position: absolute;
   bottom: 100%;
@@ -291,8 +291,9 @@ input[type="number"] {
   cursor: default;
   pointer-events: none;
   transition: opacity 150ms ease;
+  font-variant-numeric: tabular-nums;
 }
-.memo-inner:focus-within .chars-remaining {
+.memo-inner:focus-within .char-counter {
   opacity: 1;
   pointer-events: auto;
 }

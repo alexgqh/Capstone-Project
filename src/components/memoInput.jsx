@@ -12,7 +12,9 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
     const remaining = maxChars - currentLength;
     const className = (remaining > criticalThreshold) ? "color-green" : "color-peach";
     return (
-      <p className="chars-remaining input-caption color-green">Characters remaining: <span className={className}>{remaining}</span>/{maxChars}</p>
+      <div className="char-counter">
+        <p className="input-caption color-green">Characters remaining: <span className={className}>{remaining}</span>/{maxChars}</p>
+      </div>
     );
   }
 
@@ -26,7 +28,3 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
 }
 
 export default MemoInput;
-
-//change error icon
-//make remaining char text align left
-//create reservation confirmed page
