@@ -10,7 +10,7 @@ export const defaultState = {
   lastName: null, //255 characters
   email: null, //254 characters
   phoneNumber: null, //15 characters
-  additionalInfo: null, //200 characters
+  additionalInfo: null, //500 characters
 }
 
 //Constants
