@@ -3,13 +3,16 @@ import '../styles/reservePage2.css'
 
 import Button from "./button"
 import TextInput from './textInput'
+import ErrorMessage from './errorMessage'
 import { usePage } from "./global/PageContext"
-import { useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { validateInput } from './reducer/reserveReducer'
 import { useReserveState } from './context/reserveContext'
 
 const ReservePage2 = () => {
   const { setPageReserve1, setPageConfirmed } = usePage();
+  const [ invalidFields, setInvalidFields ] = useState(null);
+  const [ missingFields, setMissingFields ] = useState(null);
   const firstInputRef = useRef();
   const state = useReserveState();
 
@@ -22,12 +25,25 @@ const ReservePage2 = () => {
     if (result.success) {
       setPageConfirmed();
     } else {
-      alert('error!')
+      if (result.invalidValue.length > 0) {
+        setInvalidFields("Invalid format: "+result.invalidValue.join(", "));
+      } else {
+        setInvalidFields(null);
+      }
+      if (result.missingValue.length === 1) {
+        setMissingFields("Field missing: "+result.missingValue[0]);
+      } else if (result.missingValue.length > 1) {
+        setMissingFields("Fields missing: "+result.missingValue.join(", "));
+      } else {
+        setMissingFields(null);
+      }
     }
   }
 
   return (
     <>
+      {invalidFields && <ErrorMessage message={invalidFields} />}
+      {missingFields && <ErrorMessage message={missingFields} />}
       <div className = "two-col-layout">
         <TextInput id="input-name-first" caption="First name" placeholder="Your first name" field="firstName" ref={firstInputRef} />
         <TextInput id="input-name-last" caption="Last name" placeholder="Your last name" field="lastName" />
