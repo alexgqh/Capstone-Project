@@ -195,6 +195,9 @@ input[type=number] {
 .padding-top-md {
   padding-top: var(--padding-block-md);
 }
+.padding-bottom-md {
+  padding-bottom: var(--padding-block-md);
+}
 
 .no-scrollbar {
   position: fixed;

@@ -50,7 +50,7 @@ const ReservePage2 = () => {
         <TextInput id="input-email" caption="Email" placeholder="Your email" field="email" type="email" />
         <TextInput id="input-tel" caption="Phone number" placeholder="Your phone number" field="phoneNumber" type="tel" />
       </div>
-      <div className="five-col-layout">
+      <div className="five-col-layout padding-bottom-md">
         <Button className="form-button-reg" onClick={setPageReserve1}>Previous</Button>
         <Button className="form-button-cta" isCTA={true} onClick={handleConfirmClick}>Reserve Now!</Button>
       </div>
