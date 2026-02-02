@@ -31,7 +31,7 @@ export const textFieldLengths = {
 }
 
 //Helper functions
-const isValidInteger = (int) => Number.isValidInteger(int);
+const isValidInteger = (int) => Number.isInteger(int);
 const isValidDate = (date) => (date instanceof Date && !isNaN(date));
 const isValidTime = (time) => {
   const acceptableTimes = ["5:00","5:15","5:30","5:45","6:00","6:15","6:30","6:45","7:00","7:15","7:30","7:45","8:00","8:15","8:30","8:45","9:00","9:15","9:30","9:45"];
@@ -55,7 +55,7 @@ const clampDate = (d, min = MINDATE, max = MAXDATE) => {
   if (_d > _max) return max;
   return _d;
 }
-function isDateWithinRange(date, start, end) {
+export function isDateWithinRange(date, start, end) {
   start = new Date(start.getFullYear(), start.getMonth(), start.getDate());
   end = new Date(end.getFullYear(), end.getMonth(), end.getDate());
   return (date >= start && date <= end);
