@@ -288,7 +288,11 @@ input[type="number"] {
   bottom: 100%;
   right: 0%;
   padding-right: 8px;
+  cursor: default;
+  pointer-events: none;
+  transition: opacity 150ms ease;
 }
 .memo-inner:focus-within .chars-remaining {
   opacity: 1;
+  pointer-events: auto;
 }
