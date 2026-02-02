@@ -270,7 +270,7 @@ input[type="number"] {
 /*--------------------------------------------------*/
 .memo-inner {
   height: 200px;
-  align-items: flex-start;
+  position: relative;
 }
 .memo-input {
   height: calc(100% - var(--padding-block-sm));
@@ -281,4 +281,10 @@ input[type="number"] {
 }
 .memo-input::placeholder {
   color: var(--color-placeholder);
+}
+.chars-remaining {
+  position: absolute;
+  bottom: 100%;
+  right: 0%;
+  padding-right: 8px;
 }

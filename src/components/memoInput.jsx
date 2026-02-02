@@ -6,9 +6,19 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
   const value = useReserveState().additionalInfo;
   const dispatch = useReserveDispatch();
 
+  function renderCharsRemaining() {
+    const criticalThreshold = maxChars / 10;
+    const remaining = maxChars - value.length;
+    const className = (remaining > criticalThreshold) ? "color-green" : "color-peach";
+    return (
+      <p className="chars-remaining input-caption color-green">Characters remaining: <span className={className}>{remaining}</span>/{maxChars}</p>
+    );
+  }
+
   const handleChange = (e) => dispatch({ type: "setTextField", field: "additionalInfo", value: e.target.value });
   return (
     <InputBase id={id} className="memo-inner" caption={caption} isRequired={isRequired} tabIndex={-1}>
+      {renderCharsRemaining()}
       <textarea className="memo-input input-font" placeholder={placeholder} rows={numLines} maxlength={maxChars} value={value} onChange={handleChange} />
     </InputBase>
   );
