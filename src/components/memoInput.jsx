@@ -7,8 +7,9 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
   const dispatch = useReserveDispatch();
 
   function renderCharsRemaining() {
+    const currentLength = value ? value.length : 0;
     const criticalThreshold = maxChars / 10;
-    const remaining = maxChars - value.length;
+    const remaining = maxChars - currentLength;
     const className = (remaining > criticalThreshold) ? "color-green" : "color-peach";
     return (
       <p className="chars-remaining input-caption color-green">Characters remaining: <span className={className}>{remaining}</span>/{maxChars}</p>
