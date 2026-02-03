@@ -16,12 +16,12 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="page-padding">
       <hr className="color-charcoal" />
-      <div className="space-block-64" ariaHidden="true" />
+      <div className="space-block-64" aria-hidden={true} />
       <div id="testimonials-display">
         <h1 className="color-green" style={{textAlign: "center", gridColumn: "1 / -1"}}>Testimonials</h1>
         {users.map(user => <Testimonial {...user} key={crypto.randomUUID()} />)}
       </div>
-      <div className="space-block-64" ariaHidden="true" />
+      <div className="space-block-64" aria-hidden={true} />
       <hr className="color-charcoal" />
     </section>
   );

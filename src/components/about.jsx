@@ -34,7 +34,7 @@ const About = () => {
       <div style={{flex:"1", alignSelf:"center"}}>
         <h1 className="color-green">About Little Lemon</h1>
         {copy.map((line,i) => {
-          return <p className="color-charcoal" style={i==copy.length-1 ? {} : {marginBottom:"1rem"}}>{line}</p>
+          return <p className="color-charcoal" style={i==copy.length-1 ? {} : {marginBottom:"1rem"}} key={crypto.randomUUID()}>{line}</p>
         })}
       </div>
       <div style={{width:"483px", position:"relative"}}>
