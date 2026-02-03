@@ -1,31 +1,31 @@
-// export const defaultState = {
-//   /*--page 1--*/
-//   guests: 1, //1 to 30
-//   seating: 0, //0 or 1
-//   date: null, //today's date to 90 days in the future
-//   time: null, //5pm-9:45pm in increments of 15 minutes
-//   occasion: null, //"Birthday", "Engagement", "Anniversary"
-//   /*--page 2--*/
-//   firstName: "", //255 characters
-//   lastName: "", //255 characters
-//   email: "", //254 characters
-//   phoneNumber: "", //15 characters
-//   additionalInfo: "", //500 characters
-// }
 export const defaultState = {
   /*--page 1--*/
   guests: 1, //1 to 30
   seating: 0, //0 or 1
-  date: new Date(), //today's date to 90 days in the future
-  time: "5:00", //5pm-9:45pm in increments of 15 minutes
+  date: null, //today's date to 90 days in the future
+  time: null, //5pm-9:45pm in increments of 15 minutes
   occasion: null, //"Birthday", "Engagement", "Anniversary"
   /*--page 2--*/
-  firstName: "a", //255 characters
-  lastName: "a", //255 characters
-  email: "a@a", //254 characters
-  phoneNumber: "1111111", //15 characters
+  firstName: "", //255 characters
+  lastName: "", //255 characters
+  email: "", //254 characters
+  phoneNumber: "", //15 characters
   additionalInfo: "", //500 characters
 }
+// export const defaultState = {
+//   /*--page 1--*/
+//   guests: 2, //1 to 30
+//   seating: 1, //0 or 1
+//   date: new Date("February 23, 2026"), //today's date to 90 days in the future
+//   time: "7:00", //5pm-9:45pm in increments of 15 minutes
+//   occasion: 2, //"Birthday", "Engagement", "Anniversary"
+//   /*--page 2--*/
+//   firstName: "Alex", //255 characters
+//   lastName: "Amin", //255 characters
+//   email: "gymalamo@yahoo.com", //254 characters
+//   phoneNumber: "407-637-1435", //15 characters
+//   additionalInfo: "Please do me a favor and be the nicest server on the entire planet. We can't afford another situation where we get screwed over by a server's bad vibes. Last time it happened, we got home and I didn't even get laid. That is unacceptable. If my night doesn't end in sex, I'm never coming to Little Lemon again, and I'm going to tell all my friends that it stinks and that the employees don't wash their hands. You've been warned, bitches!!! Make this a special night for me or else!", //500 characters
+// }
 
 //Constants
 export const MINGUESTS = 1;

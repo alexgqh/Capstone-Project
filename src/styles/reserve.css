@@ -42,5 +42,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 1rem;
+}
+.reservation-details {
+  background-color: var(--color-highlight-1);
+  border-radius: 16px;
+  padding: 1rem;
+  max-width: 500px;
+  overflow-wrap: break-word;
+}
+.reservation-details h4 {
+  color: var(--color-primary-1);
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+.reservation-details p {
+  color: var(--color-highlight-2);
 }

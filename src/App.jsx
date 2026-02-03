@@ -40,7 +40,7 @@ function App() {
   }
   const setPageConfirmed = () => {
     setPage("reservationConfirming");
-    // setTimeout(() => setPage("reservationConfirmed"), 2500);
+    setTimeout(() => setPage("reservationConfirmed"), 2500);
   }
 
   useEffect(() => {
