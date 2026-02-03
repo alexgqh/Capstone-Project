@@ -1,8 +1,13 @@
-
+import LoadingIcon from "./loadingIcon";
 
 const ReserveConfirming = () => {
   return (
-    <span>Confirming your reservation...</span>
+    <div className="fullscreen bg-white">
+      <div className="vertical-layout">
+        <LoadingIcon />
+        <h4 className="color-green">Confirming<br />reservation...</h4>
+      </div>
+    </div>
   )
 }
 

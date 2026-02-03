@@ -1,0 +1,14 @@
+.loading-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border-top: 8px solid var(--color-primary-1);
+  border-bottom: 8px solid var(--color-primary-2);
+  animation: rotate 1s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  0% { rotate: 0deg; }
+  100% {rotate: 360deg; }
+}

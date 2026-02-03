@@ -20,3 +20,27 @@
     grid-column: 2;
   }
 }
+
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bg-white {
+  background-color: var(--color-highlight-1);
+}
+.bg-green {
+  background-color: var(--color-primary-1);
+}
+.vertical-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
