@@ -130,19 +130,19 @@ export function validateInput(state) {
   }
 
   //Validate first name
-  if (state.firstName === null) {
+  if (state.firstName.trim().length === 0) {
     result.success = false;
     result.missingValue.push("first name");
   }
 
   //Validate last name
-  if (state.lastName === null) {
+  if (state.lastName.trim().length === 0) {
     result.success = false;
     result.missingValue.push("last name");
   }
 
   //Validate email
-  if (state.email === null) {
+  if (state.email.trim().length === 0) {
     result.success = false;
     result.missingValue.push("email address");
   } else if (!isValidEmail(state.email)) {
@@ -151,7 +151,7 @@ export function validateInput(state) {
   }
 
   //Validate telephone number
-  if (state.phoneNumber === null) {
+  if (state.phoneNumber.trim().length === 0) {
     result.success = false;
     result.missingValue.push("phone number");
   } else if (!isValidPhoneNumber(state.phoneNumber)) {
