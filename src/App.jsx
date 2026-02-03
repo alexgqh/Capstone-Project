@@ -39,21 +39,38 @@ function App() {
     setIsCanceling(true);
   }
   const setPageConfirmed = () => {
-    setPage("reservationConfirmed");
+    setPage("reservationConfirming");
+    setTimeout(() => setPage("reservationConfirmed"), 2500);
   }
 
   useEffect(() => {
     document.querySelector("body").classList = isCanceling ? 'no-scrollbar' : '';
   }, [isCanceling])
 
+  function renderHeader() {
+    if (!["reservationConfirmed","reservationConfirming"].includes(page)) {
+      return <Header ref={headerRef} />;
+    }
+  }
+
+  function renderPage() {
+    switch (page) {
+      case "home": return <Home />;
+      case "reserve1":
+      case "reserve2":
+      case "reservationConfirming":
+      case "reservationConfirmed": return <Reserve />;
+      default: {
+        setPage("home");
+        return <Home />;
+      }
+    }
+  }
+
   return (
     <PageProvider value={{page, setPageHome, setPageReserve1, setPageReserve2, setPageReserve, setPageConfirmed, cancelReservation, scrollToTop}}>
-      {page !== "reservationConfirmed" && <Header ref={headerRef} />}
-      {
-        page === "home" ?
-          <Home /> :
-          <Reserve />
-      }
+      {renderHeader()}
+      {renderPage()}
       {isCanceling ?
         <Confirm
           confirmIsCTA={false}

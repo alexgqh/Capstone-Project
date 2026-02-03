@@ -2,6 +2,7 @@ import ReserveProvider from "./context/reserveContext"
 import ReserveBanner from './reserveBanner'
 import ReservePage1 from "./reservePage1"
 import ReservePage2 from "./reservePage2"
+import ReserveConfirming from './reserveConfirming';
 import ReserveConfirmation from "./reserveConfirmation"
 import { usePage } from "./global/PageContext"
 
@@ -9,6 +10,7 @@ const Reserve = () => {
 
   const { page } = usePage();
 
+  const isConfirming = (page === "reservationConfirming");
   const isConfirmed = (page === "reservationConfirmed");
 
   function renderReserveForm() {
@@ -22,8 +24,9 @@ const Reserve = () => {
 
   return (
     <ReserveProvider>
-      {!isConfirmed && <ReserveBanner />}
-      {!isConfirmed && renderReserveForm()}
+      {!isConfirmed && !isConfirming && <ReserveBanner />}
+      {!isConfirmed && !isConfirming && renderReserveForm()}
+      {isConfirming && <ReserveConfirming />}
       {isConfirmed && <ReserveConfirmation />}
     </ReserveProvider>
   )

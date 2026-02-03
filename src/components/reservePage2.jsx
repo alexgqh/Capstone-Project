@@ -41,10 +41,19 @@ const ReservePage2 = () => {
     }
   }
 
+  function renderErrorMessages() {
+    if (!invalidFields && !missingFields) return;
+    return (
+      <div className="error-container">
+        {invalidFields && <ErrorMessage message={invalidFields} />}
+        {missingFields && <ErrorMessage message={missingFields} />}
+      </div>
+    )
+  }
+
   return (
     <>
-      {invalidFields && <ErrorMessage message={invalidFields} />}
-      {missingFields && <ErrorMessage message={missingFields} />}
+      {renderErrorMessages()}
       <div className = "two-col-layout">
         <TextInput id="input-name-first" caption="First name" placeholder="Your first name" field="firstName" ref={firstInputRef} />
         <TextInput id="input-name-last" caption="Last name" placeholder="Your last name" field="lastName" />

@@ -22,7 +22,7 @@ const MemoInput = ({ id, caption, placeholder, numLines, maxChars, isRequired=fa
   return (
     <InputBase id={id} className="memo-wrapper" caption={caption} isRequired={isRequired} tabIndex={-1}>
       {renderCharsRemaining()}
-      <textarea className="memo-input input-font" placeholder={placeholder} rows={numLines} maxlength={maxChars} value={value} onChange={handleChange} />
+      <textarea className="memo-input input-font" placeholder={placeholder} rows={numLines} maxLength={maxChars} value={value} onChange={handleChange} />
     </InputBase>
   );
 }

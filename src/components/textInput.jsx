@@ -19,7 +19,6 @@ const TextInput = ({ id, caption, isRequired=true, type="text", placeholder, ref
       value={value}
       placeholder={placeholder}
       required={isRequired}
-      // autoFocus={true}
       ref={ref}
     />
   }
