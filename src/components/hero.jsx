@@ -1,6 +1,6 @@
 import HeroImg from '../assets/hero-img.jpg';
 import Button from './button';
-import { usePage } from './global/pageContext';
+import { usePage } from './global/PageContext';
 
 const Hero = () => {
   const { setPageReserve } = usePage();

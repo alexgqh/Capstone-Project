@@ -1,4 +1,3 @@
-import Header from './header';
 import Hero from './hero';
 import Specials from './specials';
 import Testimonials from './testimonials';
