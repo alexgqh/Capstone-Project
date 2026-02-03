@@ -1,31 +1,31 @@
-// export const defaultState = {
-//   /*--page 1--*/
-//   guests: 1, //1 to 30
-//   seating: 0, //0 or 1
-//   date: null, //today's date to 90 days in the future
-//   time: null, //5pm-9:45pm in increments of 15 minutes
-//   occasion: null, //"Birthday", "Engagement", "Anniversary"
-//   /*--page 2--*/
-//   firstName: "", //255 characters
-//   lastName: "", //255 characters
-//   email: "", //254 characters
-//   phoneNumber: "", //15 characters
-//   additionalInfo: "", //500 characters
-// }
 export const defaultState = {
   /*--page 1--*/
   guests: 1, //1 to 30
   seating: 0, //0 or 1
-  date: new Date(), //today's date to 90 days in the future
-  time: "5:00", //5pm-9:45pm in increments of 15 minutes
+  date: null, //today's date to 90 days in the future
+  time: null, //5pm-9:45pm in increments of 15 minutes
   occasion: null, //"Birthday", "Engagement", "Anniversary"
   /*--page 2--*/
-  firstName: "a", //255 characters
-  lastName: "a", //255 characters
-  email: "a@a", //254 characters
-  phoneNumber: "1111111", //15 characters
+  firstName: "", //255 characters
+  lastName: "", //255 characters
+  email: "", //254 characters
+  phoneNumber: "", //15 characters
   additionalInfo: "", //500 characters
 }
+// export const defaultState = {
+//   /*--page 1--*/
+//   guests: 1, //1 to 30
+//   seating: 0, //0 or 1
+//   date: new Date(), //today's date to 90 days in the future
+//   time: "5:00", //5pm-9:45pm in increments of 15 minutes
+//   occasion: null, //"Birthday", "Engagement", "Anniversary"
+//   /*--page 2--*/
+//   firstName: "a", //255 characters
+//   lastName: "a", //255 characters
+//   email: "a@a", //254 characters
+//   phoneNumber: "1111111", //15 characters
+//   additionalInfo: "", //500 characters
+// }
 
 //Constants
 export const MINGUESTS = 1;
