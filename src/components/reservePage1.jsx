@@ -20,7 +20,7 @@ const ReservePage1 = () => {
       <CalendarInput id="input-date" caption="Date" placeholder="Select a date..." minDate={MINDATE} maxDate={MAXDATE} />
       <TimeInput id="input-time" placeholder="Select a time..." />
       <ComboboxInput id="input-occasion" caption="Occasion" isRequired={false} placeholder="What's the occasion? (Optional)" options={OCCASIONOPTIONS} />
-      <div ariaHidden="true" />
+      <div aria-hidden={true} />
       <Button className="form-button-reg" onClick={cancelReservation}>Cancel</Button>
       <Button className="form-button-cta" isCTA={true} onClick={setPageReserve2}>Continue</Button>
     </div>

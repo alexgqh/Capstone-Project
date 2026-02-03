@@ -10,7 +10,7 @@ function App() {
   const headerRef = useRef();
 
   const scrollToTop = () => {
-    headerRef?.current.scrollIntoView({
+    headerRef.current?.scrollIntoView({
       behavior: 'smooth', // Optional: for a smooth scrolling animation
       block: 'start',      // Optional: align the top of the element to the top of the viewport
     });
