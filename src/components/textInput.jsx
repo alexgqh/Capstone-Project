@@ -12,8 +12,9 @@ const TextInput = ({ id, caption, isRequired=true, type="text", placeholder, ref
     const raw = textFieldLengths[field]
     const maxLength = Number.isInteger(raw) && raw >= 0 ? raw : 0
     return <input
-      type={type}
+      id={id+"-field"}
       className="input-font"
+      type={type}
       onChange={handleChange}
       maxLength={maxLength}
       value={value}

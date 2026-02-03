@@ -26,7 +26,6 @@ const InputBase = ({ id, className, children, caption, parentStyle, style, onKey
     <div id={id} className="input-container" style={parentStyle} >
       <label className="input-caption color-green" htmlFor={fieldID}>{caption}{renderRequiredAstrisk()}</label>
       <div
-        id={fieldID}
         className={getClassName()}
         onKeyDown={handleKeyDown}
         onClick={onClick}

@@ -12,7 +12,7 @@ const ReserveConfirmation = () => {
       <div className="vertical-layout">
         <div>
           <h1>Reservation confirmed!</h1>
-          <h2>Thanks for choosing Little Lemon.</h2>
+          <h2>Thank you for choosing Little Lemon.</h2>
         </div>
         <div className="reservation-details">
           <h4>Reservation Details</h4>

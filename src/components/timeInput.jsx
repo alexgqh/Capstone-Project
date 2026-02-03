@@ -84,7 +84,7 @@ const TimeInput = ({ id, placeholder }) => {
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
     <InputBase id={id} className="input-dropdown-parent" caption="Time" onClick={handleClick} style={style} role="combobox">
-      <div className="input-flex">
+      <div className="input-flex" role="button">
         {renderTimeOrPlaceholder()}
         <img src={IconClock} alt="Clock icon" style={{width:"36px"}} />
       </div>

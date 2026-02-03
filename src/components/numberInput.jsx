@@ -68,6 +68,7 @@ const NumberInput = ({ id, caption, min, max, isRequired = true }) => {
         </button>
         <div className="number-input-container">
           <input
+            id={id+"-field"}
             className="number-input input-font"
             type="number"
             value={value} min={min} max={max}

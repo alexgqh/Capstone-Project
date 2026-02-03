@@ -44,8 +44,8 @@ const CalendarInput = ({ id, caption, placeholder, minDate, maxDate }) => {
 
   return (<>
     {expanded && <div className="fullscreen-mask" onClick={() => setExpanded(false)}/>}
-    <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={style} role="textbox" ariaLabel="Choose Date">
-      <span className="input-flex">
+    <InputBase id={id} className="input-dropdown-parent" caption={caption} onClick={handleClick} style={style} role="textbox" aria-label="Choose Date">
+      <span className="input-flex" role="button">
         {renderDateOrPlaceholder()}
         <img src={IconCalendar} alt="Calendar icon"/>
       </span>
